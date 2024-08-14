@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0', // Listen on all network interfaces
-    port: 4173,      // Use the desired port
+    port: 4174,      // Use the desired port
   }
 })
