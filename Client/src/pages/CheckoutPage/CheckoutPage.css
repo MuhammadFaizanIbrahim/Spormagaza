@@ -1,0 +1,214 @@
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 120px;
+    width: 100vw;
+    background-color: white;
+  }
+  
+  .checkout-form,
+  .order-details {
+    width: 45%;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+  }
+  
+  .checkout-form h2,
+  .order-details h2 {
+    margin-bottom: 30px;
+    color: black;
+  }
+  
+  .checkout-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .checkout-form input {
+    width: 95%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+  
+  .order-details button {
+    width: 40%;
+    height: 3rem;
+    margin-top: 2rem;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 30%;
+    font-size: 15px;
+  }
+  
+  .order-details button:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+  }
+  
+  .order-details .order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .order-summary div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  .radioOptions{
+    color: black;
+  }
+  
+  .payment-options h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .payment-options label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .divider {
+    border: 0;
+    height: 1px;
+    background: black;
+    margin: 20px 0;
+  }
+  
+  
+  .checkout-btn-disabled {
+    margin-top: 40px;
+    height: 3rem;
+    padding: 10px 20px;
+    background-color: rgb(53, 56, 54);
+    color: white;
+    border: 1px solid rgb(53, 56, 54);
+    border-radius: 20px;
+    font-size: 15px;
+    cursor: not-allowed;
+  }
+
+
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+
+  .checkout-container {
+    padding-top: 40px;
+    width: 110vw;
+  }
+  
+  .checkout-form{
+    width: 110vw;
+    padding: 20px;
+    margin-left: -6rem;
+    /* margin-right: 2rem; */
+  }
+
+  .checkout-form label {
+   font-size: 14px;
+  }
+  
+  .order-details {
+    width: 115vw;
+    padding: 20px;
+    margin-left: 2rem;
+  }
+  .order-item{
+    font-size: 14px;
+  }
+
+  .order-summary{
+    font-size: 14px;
+  }
+
+  h2{
+    font-size: 20px;
+  }
+
+  .paymentDetails{
+    font-size: 14px;
+  }
+  
+  .checkout-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+  }
+  
+  .checkout-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+  }
+  
+  .order-details button {
+    width: 50%;
+    font-size: 12px;
+  }
+  
+  
+}
+
+@media (max-width: 480px) {
+  .checkout-container {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .checkout-form{
+    padding: 10px;
+    width: 100%;
+  }
+
+  .order-details {
+    padding: 10px;
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  .checkout-form label {
+    font-size: 12px;
+   }
+
+   .order-item{
+    font-size: 14px;
+  }
+
+  .order-summary{
+    font-size: 14px;
+  }
+
+  h2{
+    font-size: 17px;
+  }
+
+  .paymentDetails{
+    font-size: 14px;
+  }
+  .order-details button {
+    width: 50%;
+    font-size: 12px;
+  }
+}

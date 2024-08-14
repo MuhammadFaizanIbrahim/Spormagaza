@@ -1,0 +1,91 @@
+.fullAbout {
+    display: flex;
+    width: 98.9vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.aboutLeftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: 18rem;
+    width: 50vw;
+    height: 90vw;
+    gap: 1rem;
+}
+
+.aboutRightSide {
+    width: 20vw;
+    height: 70%;
+}
+
+.aboutQuestion {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: black;
+}
+
+.aboutName {
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: rgb(1, 145, 30);
+}
+
+.aboutParagraph {
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    width: 60vw;
+    padding: 2rem 0 1rem 5rem;
+}
+
+.aboutLeaf {
+    width: 12rem;
+    height: 12rem;
+    position: absolute;
+    margin-top: -28rem;
+    z-index: -1;
+    opacity: 30%;
+    transform: rotate(15deg);
+    transition: transform 0.5s ease-out;
+}
+
+.aboutLeaves {
+    width: 45rem;
+    height: 25rem;
+    position: absolute;
+    margin-top: 10rem;
+    margin-left: -40rem;
+    transform: rotate(167deg);
+    transition: transform 0.5s ease-out;
+    z-index: -1;
+    opacity: 50%;
+}
+
+.aboutLeaves.zoom {
+    transform: scale(1.1) rotate(167deg);
+}
+
+.aboutImage {
+    width: 47vw;
+    height: 47vh;
+    margin-top: 2rem;
+    margin-left: 9rem;
+    z-index: -1;
+    transition: transform 0.5s ease-out;
+}
+
+.aboutImage.zoom {
+    transform: scale(1.1);
+}

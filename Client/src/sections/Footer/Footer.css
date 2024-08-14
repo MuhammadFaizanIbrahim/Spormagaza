@@ -1,0 +1,233 @@
+.fullFooter {
+    width: 100vw;
+    height: 70%; /* Adjust height as needed */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    /* padding: 20px; */
+}
+
+.footerMain{
+    display: flex;
+    background-color: black;
+    position: absolute;
+    width: 100vw;
+    height: 60vh;
+    border-top: 1px solid white;
+}
+
+.footer-logo {
+    flex: 1; /* Adjust as needed */
+}
+
+.footerLogo{
+    width: 20rem;
+    margin-top: 8rem;
+    margin-left: 10rem;
+}
+
+/* .footerImage2 {
+    position: absolute;
+    z-index: -1;
+    width: 98.9vw;
+    height: 91vh;
+    margin-left: -1.3rem;
+  }
+.footerImage3 {
+    position: absolute;
+    z-index: 0;
+    width: 98.9vw;
+    height: 80vh;
+    margin-left: -1.3rem;
+  } */
+
+
+.footer-options {
+    display: flex;
+    margin-top: 8rem;
+    color: white;
+    gap: 4rem;
+}
+
+.footer-column {
+    margin-right: 20px;
+    width: 18rem;
+}
+
+.footer-column h4 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    margin-left: 0.5rem;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    /* margin-bottom: 8px; */
+    font-size: 12px;
+    line-height: 3rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+.li {
+    /* margin-bottom: 8px; */
+    font-size: 12px;
+    line-height: 3rem;
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+.footer-column2 {
+    margin-right: 60px;
+    /* width: 20rem; */
+}
+
+.footer-column2 h4 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.footer-column2 ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.footer-column3 {
+    margin-right: 70px;
+    /* width: 20rem; */
+}
+
+.footer-column3 h4 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.footer-column3 ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column; /* Ensure vertical list */
+}
+
+.footer-column3 li {
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+
+/* Tablet styles */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    /* .fullFooter {
+        width: 100vw;
+    } */
+    .footerMain {
+        height: auto;
+        gap: 2rem;
+        padding: 2rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .footerLogo {
+        width: 10rem;
+        height: 5rem;
+        margin: 1rem;
+    }
+
+    .footer-options {
+        display: flex;
+        /* align-items: center; */
+        gap: 1px;
+        margin-left: 4.5rem;
+        margin-top: -0.2rem;
+        width: 100vw;
+    }
+
+    .footer-column{
+        width: 100%;
+        margin-right: 2rem;
+    }
+    .footer-column2, .footer-column3 {
+        width: 80%;
+        text-align: center;
+    }
+
+    .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
+        font-size: 14px;
+    }
+
+    .footer-column ul li{
+        font-size: 8px;
+        width: 10rem;
+        height: 1.5rem;
+    }
+    
+    .li {
+        font-size: 8px;
+    }
+}
+
+/* Mobile styles */
+@media screen and (max-width: 480px) {
+    .footerMain {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        /* padding: 1rem; */
+    }
+
+    .footerLogo {
+        width: 10rem;
+        height: 5rem;
+        margin: 1rem 0;
+    }
+
+    .footer-options {
+        display: flex;
+        /* align-items: center; */
+        gap: 1px;
+        margin-left: 2rem;
+        margin-top: -0.2rem;
+        width: 100vw;
+    }
+
+    .footer-column{
+        width: 150%;
+        margin-right: 2rem;
+    }
+    .footer-column2 {
+        width: 20%;
+        text-align: center;
+        margin-left: -4rem;
+    }
+    .footer-column3 {
+        width: 20%;
+        text-align: center;
+        margin-left: -1rem;
+    }
+
+    .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
+        font-size: 14px;
+    }
+
+    .footer-column ul li{
+        font-size: 7px;
+        width: 9rem;
+        height: 1.5rem;
+    }
+    
+    .li {
+        font-size: 7px;
+    }
+}

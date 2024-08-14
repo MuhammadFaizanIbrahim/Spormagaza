@@ -1,0 +1,225 @@
+.fullLogin {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  width: 100vw;
+  padding: 6rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+h2{
+  color: black;
+}
+
+.login-container {
+  width: 450px;
+  height: auto;
+  top: 10rem;
+  left: 33rem;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 0 2px 4px rgb(248, 247, 247);
+  background-color: white;
+  backdrop-filter: blur(5px);
+  text-transform: uppercase;
+  z-index: 9;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 70px;
+  top: 48%;
+  transform: translateY(-50%);
+  color: black;
+}
+
+.login-toggle-password {
+  position: absolute;
+  left: 320px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: black;
+}
+
+
+.login-form input {
+  width: 75%;
+  height: 3rem;
+  padding: 8px 8px 8px 40px; /* Increased padding to fit the icon inside the input */
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: transparent;
+  color: black;
+}
+
+.login-form input::placeholder {
+  color: black; /* Placeholder text color */
+}
+
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+
+.remember-checkbox {
+  margin-right: 5px;
+}
+
+.remember-label span {
+  white-space: nowrap; /* Ensures the label text stays on one line */
+}
+
+.forgot-password-link {
+  color: black;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+
+.Login-button {
+  width: 75%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.Login-button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.google-login {
+  display: flex;
+  margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-button{
+  width: 75%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  background-color: #DB4437;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.google-button:hover {
+  background-color: #ffffff82;
+  color: #DB4437;
+  border: 1px solid #DB4437;
+}
+
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  font-size: 13px;
+  gap: 1rem;
+}
+
+.signup-link .goToSignUp{
+  color: black;
+  font-size: 14px;
+}
+
+.login-message {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.login-message.success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.login-message.error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+
+@media screen and (max-width: 480px) {
+  
+  .login-container {
+    width:70%
+  }
+  
+.input-icon {
+  left: 45px;
+  top: 48%;
+}
+
+.forgot-password-link {
+  font-size: 10px;
+}
+
+.login-toggle-password {
+  left: 190px;
+  top: 50%;
+}
+
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  
+  .login-container {
+    width:50%
+  }
+  
+.input-icon {
+  left: 60px;
+  top: 48%;
+}
+
+.forgot-password-link {
+  font-size: 10px;
+}
+
+.login-toggle-password {
+  left: 260px;
+  top: 50%;
+}
+
+}

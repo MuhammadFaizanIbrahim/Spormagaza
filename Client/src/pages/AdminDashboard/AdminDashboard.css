@@ -1,0 +1,22 @@
+/* src/components/Sidebar.css */
+.sidebar {
+    width: 250px;
+    background: #f4f4f4;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Ensure it's above other content */
+  }
+  
+  /* src/pages/AdminDashboard/AdminDashboard.css */
+  .admin-dashboard-container {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 250px; /* Adjust according to sidebar width */
+    padding: 20px;
+    width: calc(100% - 250px); /* Adjust width according to sidebar width */
+  }
+  

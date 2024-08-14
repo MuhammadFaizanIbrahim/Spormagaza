@@ -1,0 +1,217 @@
+.fullSignup {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  width: 98.9vw;
+  padding: 6rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container {
+  width: 450px;
+  height: 500px;
+  top: 12rem;
+  left: 34.5rem;
+  padding: 15px;
+  color: black;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(227, 230, 228);
+  background-color: white;
+  backdrop-filter: blur(5px);
+  text-transform: uppercase;
+  z-index: 9;
+}
+
+.signup-form .signupForm-group {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.signupInput-container {
+  position: relative;
+  width: 100%;
+}
+
+.signupInput-icon {
+  position: absolute;
+  left: 70px;
+  top: 48%;
+  transform: translateY(-50%);
+  color: #ccc;
+}
+
+.signup-toggle-password {
+  position: absolute;
+  left: 320px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: black;
+}
+
+
+.signup-form input {
+  width: 75%;
+  height: 3rem;
+  padding: 8px 8px 8px 40px; /* Increased padding to fit the icon inside the input */
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: transparent;
+  color: black;
+}
+
+.signup-form input::placeholder {
+  color: black; /* Placeholder text color */
+}
+
+.signupRemember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  width: 75%;
+}
+
+.signupRemember-label {
+  display: flex;
+  align-items: center;
+  color: black;
+  font-size: 13px;
+}
+
+.signupRemember-checkbox {
+  margin-right: 5px;
+}
+
+.signupRemember-label span {
+  white-space: nowrap; /* Ensures the label text stays on one line */
+}
+
+.signupForgot-password-link {
+  color: black;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+
+.Signup-button {
+  width: 75%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.Signup-button:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.signupGoogle-login {
+  display: flex;
+  margin-top: 15px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.signupGoogle-button{
+  width: 75%;
+  padding: 10px;
+  margin-top: 0.5rem;
+  background-color: rgb(1, 145, 30);
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+
+.signupGoogle-button:hover {
+  background-color: #ffffff82;
+  color: rgb(1, 145, 30);
+  border: 1px solid rgb(1, 145, 30);
+}
+
+
+.login-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  font-size: 13px;
+  gap: 1rem;
+}
+
+.login-link .goToLogin{
+  color: black;
+  font-size: 14px;
+}
+
+
+@media screen and (max-width: 480px) {
+  
+  .signup-container {
+    width:70%
+  }
+  
+.signupInput-icon {
+  left: 45px;
+  top: 48%;
+}
+
+.signupForgot-password-link {
+  font-size: 10px;
+}
+
+.login-link {
+  font-size: 8px;
+}
+
+.login-link .goToLogin{
+  font-size: 10px;
+}
+
+.signup-toggle-password {
+  left: 190px;
+  top: 50%;
+}
+
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  
+  .signup-container {
+    width:50%
+  }
+  
+.signupInput-icon {
+  left: 60px;
+  top: 48%;
+}
+
+.signupForgot-password-link {
+  font-size: 10px;
+}
+
+.signup-toggle-password {
+  left: 260px;
+  top: 50%;
+}
+
+}

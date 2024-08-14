@@ -1,0 +1,248 @@
+.products-page {
+  padding: 1px 0 40px 20px;
+  text-align: center;
+  background-color: white;
+  width: 100vw;
+  height: 100%;
+}
+
+.products-page h2 {
+  margin-top: 6rem;
+  font-size: 3em;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  text-transform: uppercase;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+  margin: 30px 0 50px 80rem;
+}
+
+.filter-button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  border: 1px solid black;
+}
+
+.category-filter {
+  margin-bottom: 20px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-filter label {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.category-filter select {
+  padding: 5px;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.filter-options {
+  margin-bottom: 20px;
+  text-align: left;
+  color: white;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.filter-item label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.filter-item select,
+.filter-item input {
+  padding: 5px;
+  color: black;
+}
+
+.rangePrice {
+  color: black;
+}
+
+.priceRangeLabel{
+  color: black;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px; /* Adjusted padding */
+  width: 320px; /* Adjusted width */
+  height: 400px; /* Adjusted height */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto; /* Adjust height to be auto */
+  margin: 0 auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 300px; /* Adjusted height */
+  object-fit: contain; /* Ensures image fits within the container */
+  object-position: center; /* Centers the image within the container */
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1.2em; /* Adjust font size */
+  color: black;
+}
+
+.product-card .price {
+  font-size: 1em; /* Adjust font size */
+  color: black;
+  margin: 10px 0 0 0;
+}
+
+.button {
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.load-more {
+  display: block;
+  margin: 60px auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+.load-more:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  border: 1px solid black;
+}
+
+.button:disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+/* Tablet Styles */
+@media screen and (max-width: 768px) {
+  .products-page {
+    padding: 10px;
+  }
+
+  .products-page h2 {
+    font-size: 2.5em;
+  }
+
+  .filter-button {
+    margin: 30px 0 50px 0;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card {
+    width: 100%; /* Ensure cards take full width of the grid column */
+  }
+
+
+  .product-card img {
+    height: 200px; /* Adjusted height */
+  }
+
+  .product-card h3 {
+    font-size: 1em; /* Adjust font size */
+  }
+
+  .product-card .price {
+    font-size: 0.9em; /* Adjust font size */
+  }
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 480px) {
+  .products-page {
+    padding: 10px;
+  }
+
+  .products-page h2 {
+    font-size: 2em;
+  }
+
+  .filter-button {
+    margin: 30px 0 50px 0;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-card {
+    width: 100%; /* Ensure cards take full width of the grid column */
+  }
+
+  .product-card img {
+    height: 150px; /* Adjusted height */
+  }
+
+  .product-card h3 {
+    font-size: 0.9em; /* Adjust font size */
+  }
+
+  .product-card .price {
+    font-size: 0.8em; /* Adjust font size */
+  }
+}

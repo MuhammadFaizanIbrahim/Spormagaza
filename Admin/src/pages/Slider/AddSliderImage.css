@@ -1,0 +1,37 @@
+/* SliderImagesPage.css */
+.slider-images-page {
+    padding: 20px;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .image-item {
+    text-align: center;
+  }
+  
+  .image-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+  }
+  
+  .image-item p {
+    margin: 0 0 10px;
+  }
+  
+  .image-item input {
+    display: block;
+    margin: 0 auto 10px;
+  }
+  
+  .image-item button {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+  }
+  

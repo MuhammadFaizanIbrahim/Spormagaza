@@ -1,0 +1,75 @@
+.preLoader {
+    height: 100%;
+    width: 100%;
+    background: black;
+    color: #FFF;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .preLoader .text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    font-size: 35px;
+    font-weight: 300;
+    overflow: hidden;
+    color: #17A2B8;
+  }
+  
+  .preLoader .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .rotate-once {
+    animation: rotateOnce 2s ease-in-out; /* Adjust animation duration as needed */
+  }
+  
+  .zoom-in {
+    animation: zoomIn 1s ease-in-out; /* Adjust animation duration as needed */
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s ease-in-out forwards; /* Adjust animation duration as needed */
+  }
+  
+  @keyframes rotateOnce {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
