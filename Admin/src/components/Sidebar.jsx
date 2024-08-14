@@ -10,6 +10,8 @@ import CategoryIcon from '@mui/icons-material/Category';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
 import ImageIcon from '@mui/icons-material/Image';
 import LogoutIcon from '@mui/icons-material/Logout'; // Import the Logout icon
+import InfoIcon from '@mui/icons-material/Info'; // Import the InfoIcon
+
 
 const Sidebar = () => {
 
@@ -65,7 +67,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                     <SlideshowIcon />
                 </ListItemIcon>
-                <ListItemText primary="Slider" />
+                <ListItemText primary="Kaydırıcı" />
             </ListItem>
             <ListItem button component={Link} to="/logoImage">
                 <ListItemIcon>
@@ -74,10 +76,10 @@ const Sidebar = () => {
                 <ListItemText primary="Logo" />
             </ListItem>
             <ListItem button component={Link} to="/info">
-                <ListItemIcon>
-                    <ImageIcon />
-                </ListItemIcon>
-                <ListItemText primary="Bilgi" />
+            <ListItemIcon>
+                <InfoIcon /> {/* Use InfoIcon instead of ImageIcon */}
+            </ListItemIcon>
+            <ListItemText primary="Bilgi" />
             </ListItem>
                 <ListItem button component={Link} to="/">
                     <ListItemIcon>
