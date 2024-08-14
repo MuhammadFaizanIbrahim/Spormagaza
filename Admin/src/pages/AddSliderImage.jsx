@@ -71,13 +71,13 @@ const SliderImages = () => {
 
     return (
         <Container style={{ marginLeft: '260px', padding: '20px' }}>
-            <Typography variant="h4">Slider Images</Typography>
+            <Typography variant="h4">Kaydırıcı Görselleri</Typography>
             {message && <Alert severity={severity} style={{ margin: '20px 0' }}>{message}</Alert>}
 
             <Grid container spacing={3}>
                 {Array.isArray(sliderImages) && sliderImages.map((image, index) => (
                     <Grid item xs={12} sm={4} key={index}>
-                        <Typography variant="subtitle1"><b>Slider {Math.floor(index / 3) + 1} Image {index % 3 + 1}:</b></Typography>
+                        <Typography variant="subtitle1"><b>Kaydırıcı {Math.floor(index / 3) + 1} Resim {index % 3 + 1}:</b></Typography>
                         <img
                             src={image.imageUrl}  // Use image.url to display the image
                             alt={`Slider ${Math.floor(index / 3) + 1} Image ${index % 3 + 1}`}
@@ -93,7 +93,7 @@ const SliderImages = () => {
                             color="primary"
                             onClick={() => handleUpdateSliderImage(index)}
                         >
-                            Update Image
+                           Resmi Güncelle
                         </Button>
                     </Grid>
                 ))}

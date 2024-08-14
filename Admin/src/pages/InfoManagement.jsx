@@ -61,13 +61,13 @@ const InfoPage = () => {
 
     return (
         <Container style={{ marginLeft: '260px', padding: '20px' }}>
-            <Typography variant="h4">IBAN & Contact Information</Typography>
+            <Typography variant="h4">IBAN ve İletişim Bilgileri</Typography>
             {message && <Alert severity={severity} style={{ margin: '20px 0' }}>{message}</Alert>}
 
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="IBAN Number"
+                        label="IBAN Numarası"
                         name="ibanNumber"
                         value={info.ibanNumber}
                         onChange={handleInputChange}
@@ -77,7 +77,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="Phone Number 1"
+                        label="Ödeme Doğrulaması için Whatsapp Numarası"
                         name="phoneNumber1"
                         value={info.phoneNumber1}
                         onChange={handleInputChange}
@@ -86,7 +86,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="Phone Number 2"
+                        label="İletişim Sayfasında görüntülenecek Telefon Numarası"
                         name="phoneNumber2"
                         value={info.phoneNumber2}
                         onChange={handleInputChange}
@@ -95,7 +95,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="Email"
+                        label="E-Posta"
                         name="email"
                         value={info.email}
                         onChange={handleInputChange}
@@ -104,7 +104,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
-                        label="Address"
+                        label="Adres"
                         name="address"
                         value={info.address}
                         onChange={handleInputChange}
@@ -119,7 +119,7 @@ const InfoPage = () => {
                         color="primary"
                         onClick={handleSubmit}
                     >
-                        {isEditing ? 'Update Information' : 'Add Information'}
+                        {isEditing ? 'Bilgileri Güncelle' : 'Bilgi Ekle'}
                     </Button>
                 </Grid>
             </Grid>

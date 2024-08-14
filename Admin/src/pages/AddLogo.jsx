@@ -67,7 +67,7 @@ const LogoImages = () => {
 
     return (
         <Container style={{ marginLeft: '260px', padding: '20px' }}>
-            <Typography variant="h4">Logo Images</Typography>
+            <Typography variant="h4">Logo Görselleri</Typography>
             {message && <Alert severity={severity} style={{ margin: '20px 0' }}>{message}</Alert>}
 
             <Grid container spacing={3}>
@@ -89,7 +89,7 @@ const LogoImages = () => {
                             color="primary"
                             onClick={() => handleUpdateLogoImage(index)}
                         >
-                            Update Logo
+                            Logoyu Güncelle
                         </Button>
                     </Grid>
                 ))}

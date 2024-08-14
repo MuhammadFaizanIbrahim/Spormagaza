@@ -234,12 +234,12 @@ body {
 }
 
 @media (max-width: 480px) {
-  .Logo {
-    width: 200px;
-    height: 150px;
+  /* .Logo {
+    width: 150px;
+    height: 100px;
     margin-top: 25px;
     margin-left: -30px;
-  }
+  } */
 
   .HeaderRightSide {
     margin-left: -13rem;
@@ -285,7 +285,9 @@ body {
   }
   
   .Logo {
-    width: 250px;
-    height: 70px;
+    width: 200px;
+    height: 100px;
+    margin-top: 5px;
+    margin-left: -30px;
   }
 }

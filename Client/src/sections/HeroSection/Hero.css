@@ -136,8 +136,9 @@
 /* Mobile styles */
 @media screen and (max-width: 480px) {
   .hero-section {
-    width: 100vw;
-    height: 60vh;
+    max-width: 100%;
+    height: 80vh;
+    padding-right: 1px;
   }
 
   .prev, .next {
@@ -149,5 +150,9 @@
     width: 100%;
     height: 80%;  
     top: 0%;
+  }
+  .heroImage {
+    width: calc(33.33% - 2px); /* 3 images with a white border in between */
+    border: 1px solid white;
   }
 }
