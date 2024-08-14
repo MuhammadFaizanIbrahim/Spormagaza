@@ -24,8 +24,8 @@ const Header = () => {
     // Fetch the logo image from the backend
     const fetchLogo = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/logo-images');
-            if (response.data.length > 0) {
+          const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/logo-images`);
+          if (response.data.length > 0) {
                 setLogo(response.data[0].imageUrl); // Assuming you fetch only one logo
             }
         } catch (error) {
@@ -35,7 +35,7 @@ const Header = () => {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/category');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/category`);
         if (response.data) {
           setCategories(response.data);
         }

@@ -20,7 +20,7 @@ const Footer = () => {
     // Fetch the logo image from the backend
     const fetchLogo = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/logo-images');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/logo-images`);
         if (response.data.length > 0) {
           setLogoUrl(response.data[0].imageUrl); // Assuming you fetch only one logo
         }
@@ -32,7 +32,7 @@ const Footer = () => {
     // Fetch contact info from the backend
     const fetchContactInfo = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/info');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/info`);
         if (response.data) {
           setContactInfo({
             phoneNumber1: response.data.phoneNumber1,
@@ -48,7 +48,7 @@ const Footer = () => {
     // Fetch categories from the backend
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/category');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/category`);
         if (response.data) {
           setCategories(response.data);
         }

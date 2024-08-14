@@ -11,7 +11,7 @@ const Contact = () => {
     // Fetch information from the API
     const fetchInfo = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/info');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/info`);
         if (response.data) {
           setInfo(response.data);
         }
