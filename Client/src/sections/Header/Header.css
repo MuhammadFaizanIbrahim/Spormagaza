@@ -261,10 +261,18 @@ body {
   .mobileMenuIcon {
     font-size: 20px;
     right: 20px;
-    top: 70px;
+    top: 60px;
   }
 
-   .fullHeader, .UpHeader {
+   .fullHeader{
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    width: 100vw;
+    height: 17vh;
+  }
+
+   .UpHeader {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
