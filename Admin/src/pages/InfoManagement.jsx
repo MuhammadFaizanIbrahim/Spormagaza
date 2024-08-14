@@ -77,7 +77,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="Ödeme Doğrulaması için Whatsapp Numarası"
+                        label="İletişim Sayfasında görüntülenecek Telefon Numarası"
                         name="phoneNumber1"
                         value={info.phoneNumber1}
                         onChange={handleInputChange}
@@ -86,7 +86,7 @@ const InfoPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="İletişim Sayfasında görüntülenecek Telefon Numarası"
+                        label="Ödeme Doğrulaması için Whatsapp Numarası"
                         name="phoneNumber2"
                         value={info.phoneNumber2}
                         onChange={handleInputChange}
