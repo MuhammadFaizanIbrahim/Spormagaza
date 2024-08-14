@@ -243,6 +243,7 @@ body {
 
   .HeaderRightSide {
     margin-left: -13rem;
+    margin-top: 1rem;
     gap: 2px;
   }
 
