@@ -12,7 +12,7 @@ const SliderImages = () => {
         // Fetch existing slider images
         const fetchSliderImages = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/slider-images');
+                const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/slider-images`);
                 console.log(response.data); // Check if _id is included
                 setSliderImages(response.data);
             } catch (err) {

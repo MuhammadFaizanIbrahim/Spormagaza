@@ -77,7 +77,7 @@ const Sidebar = () => {
                 <ListItemIcon>
                     <ImageIcon />
                 </ListItemIcon>
-                <ListItemText primary="Information" />
+                <ListItemText primary="Bilgi" />
             </ListItem>
                 <ListItem button component={Link} to="/">
                     <ListItemIcon>

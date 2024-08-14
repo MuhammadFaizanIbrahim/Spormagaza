@@ -12,7 +12,7 @@ const LogoImages = () => {
         // Fetch existing logo images
         const fetchLogoImages = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/logo-images');
+                const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/logo-images`);
                 setLogoImages(response.data);
             } catch (err) {
                 setSeverity('error');

@@ -17,7 +17,7 @@ const Hero = () => {
     // Fetch images from the backend
     const fetchImages = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/slider-images');
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/slider-images`);
         console.log('Fetched images:', response.data); // Log the fetched images
         const images = response.data.map(image => image.imageUrl); // Extract image URLs
         const groupedSlides = [];
