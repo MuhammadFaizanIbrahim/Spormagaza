@@ -1,0 +1,46 @@
+/* Layout container to handle the full height of the viewport */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the layout takes up at least the full viewport height */
+}
+
+/* Main content area to push footer to the bottom */
+.main-content {
+  flex: 1; /* Allows the main content to expand and fill the available space */
+}
+
+/* Footer styles */
+.footer {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  z-index: 10; /* Ensure it has a higher z-index than other content */
+}
+
+/* Bottom navigation bar styles */
+.bottom-nav-bar {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px; /* Set height for the BottomNavBar */
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top of other content */
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Media query to show the BottomNavBar on mobile screens */
+@media only screen and (max-width: 768px) {
+  .bottom-nav-bar {
+    display: flex; /* Show on mobile screens only */
+  }
+}

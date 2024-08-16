@@ -19,6 +19,7 @@ import './App.css'
 import UpdatePassword from './components/UpdatePassword/UpdatePassword';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import BottomNavBar from './sections/BottomNavbar/BottomNavbar';
 
 
 
@@ -66,6 +67,7 @@ const App = () => {
               />
             </Route>
           </Routes>
+          {/* <BottomNavBar />  */}
         </BrowserRouter>
       )}
     </CartProvider>

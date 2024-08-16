@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Header.css';
-import logo from '../../assets/images/DGLogo3.png';
-import { FaShoppingBag, FaBars, FaTimes } from "react-icons/fa";
+import { FaShoppingCart, FaBars, FaTimes, FaUser, FaSearch} from "react-icons/fa";
+import { FiShoppingCart, FiMenu, FiX, FiUser, FiSearch } from "react-icons/fi";
 import { useCart } from '../../components/CartContext';
 import axios from 'axios';
 
@@ -109,7 +109,7 @@ const Header = () => {
 
   return (
     <div className="fullHeader">
-      <div className="UpHeader">
+      {/* <div className="UpHeader"> */}
       <Link className='HeaderLogo' style={{ color: headerColor }} to='/'>
                 {logo ? (
                     <img src={logo} className='Logo' alt="Spormagaza Tea Logo" />
@@ -117,21 +117,13 @@ const Header = () => {
                     'Loading...' // Fallback text or placeholder while loading the logo
                 )}
             </Link>
-        <div className='HeaderRightSide'>
-          <div className='profileDropdown'>
-            {isLoggedIn ? (
-              <div>
-                <span className='HeaderText' style={{ color: headerColor, cursor: 'pointer' }} onClickCapture={logout}>Çıkış</span>
-              </div>
-            ) : (
-              <Link to='/login' className='HeaderText' style={{ color: headerColor }} onClick={() => window.scrollTo(0, 0)}>
-                <p>Giriş</p>
-              </Link>
-            )}
-          </div>
+        {/* <div className='HeaderRightSide'> */}
+          {/* <div className='profileDropdown'> */}
+          
+          {/* </div> */}
           <div className='cartIconContainer'>
             <button className='bagIcon' style={{ color: headerColor, backgroundColor: 'transparent', border: 'none' }} onClick={handleCartClick}>
-              <FaShoppingBag />
+              <FiShoppingCart />
             </button>
             {userExists && totalQuantity > 0 && (
               <button className="cartQuantity" onClick={handleCartClick}>
@@ -139,11 +131,29 @@ const Header = () => {
               </button>
             )}
           </div>
-        </div>
+        {/* </div> */}
         <button className="mobileMenuIcon" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+          {isMobileMenuOpen ? <FiX /> : <FiMenu />}
         </button>
-      </div>
+      {/* </div> */}
+      {isLoggedIn ? (
+          <button className="userIcons" onClickCapture={logout}>
+          <FiUser />
+        </button>
+        ) : (
+          <Link
+            to='/login'
+            className='userIcon'
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <button className="userIcons">
+          <FiUser />
+        </button>
+          </Link>
+        )}
+      <button className="searchIcon">
+          <FiSearch />
+        </button>
       <div className={`bottomHeader ${isMobileMenuOpen ? 'open' : ''}`}>
         <Link to='/' className='HeaderText' style={{ color: headerColor }} onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}>Ana Sayfa</Link>
         {categories.map(category => (

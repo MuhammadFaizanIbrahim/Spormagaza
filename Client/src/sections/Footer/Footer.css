@@ -150,17 +150,21 @@
         /* align-items: center; */
         gap: 1px;
         margin-left: 4.5rem;
-        margin-top: -0.2rem;
+        margin-top: -1.5rem;
         width: 100vw;
+        /* margin-bottom: 5rem; */
     }
 
     .footer-column{
         width: 100%;
         margin-right: 2rem;
+        padding-bottom: 3rem;
     }
     .footer-column2, .footer-column3 {
         width: 80%;
         text-align: center;
+        padding-bottom: 3rem;
+        margin-left: -7rem;
     }
 
     .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
@@ -169,12 +173,13 @@
 
     .footer-column ul li{
         font-size: 8px;
-        width: 10rem;
+        width: 17rem;
         height: 1.5rem;
     }
     
     .li {
         font-size: 8px;
+        line-height: 1rem;
     }
 }
 
@@ -205,16 +210,17 @@
     .footer-column{
         width: 150%;
         margin-right: 2rem;
+        padding-bottom: 6rem;
     }
     .footer-column2 {
         width: 20%;
         text-align: center;
-        margin-left: -3rem;
+        margin-left: -7rem;
     }
     .footer-column3 {
         width: 20%;
         text-align: center;
-        margin-left: -1rem;
+        margin-left: -2rem;
     }
 
     .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
@@ -223,7 +229,7 @@
 
     .footer-column ul li{
         font-size: 7px;
-        width: 9rem;
+        width: 13.7rem;
         height: 1.5rem;
     }
     
@@ -233,5 +239,8 @@
 
     .li {
         font-size: 7px;
+        line-height: 1rem;
+
     }
+    
 }

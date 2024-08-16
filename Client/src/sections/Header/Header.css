@@ -8,10 +8,14 @@
 /* Temporary overflow hidden to check for overflow */
 body {
   overflow: hidden;
+  width: 100vw;
+  height: 100%;
 }
 
 .cartIconContainer {
-  position: relative;
+  position: absolute;
+  left: 82rem;
+  top: 3.1rem;
 }
 
 .cartQuantity {
@@ -29,6 +33,40 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
+.userIcons{
+  position: absolute;
+  top: 3.1rem;
+  right: 16.3rem;
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.searchIcon{
+  position: absolute;
+  top: 3.1rem;
+  right: 20rem;
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.bagIcon,
+.mobileMenuIcon,
+.userIcons,
+.searchIcon {
+  font-size: 20px;
+  font-weight: 200; /* Adjust weight for even thinner look if needed */
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 
 .fullHeader {
   width: 100%;
@@ -94,14 +132,15 @@ body {
   align-items: center;
   justify-content: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .HeaderLogo {
+  position: absolute;
   width: 10vw;
-  height: 10vh;
-  padding-bottom: 13rem;
-  padding-right: 18rem;
+  height: 5vh;
+  top: -3rem;
+  right: 47rem;
   cursor: pointer;
 }
 
@@ -148,6 +187,10 @@ body {
 
 
 @media (max-width: 768px) {
+  body {
+    width: 100vw;
+    height: 100%;
+  }
   .HeaderleftSide {
     display: none;
   }
@@ -160,16 +203,26 @@ body {
   .cartIconContainer {
     width: 16px;
     height: 16px;
-    font-size: 10px;
-    margin-right: 17rem;
-    margin-top: -7px;
+    font-size: 20px;
+    top: 42%;
+    left: 84%;
   }
 
   .mobileMenuIcon {
     display: block;
     position: fixed;
-    right: 120px;
-    top: 60px;
+    left: 8%;
+    top: 42%;
+  }
+
+  .searchIcon{
+    left: -20%;
+    top: 42%;
+
+  }
+  .userIcons{
+    left: 75%;
+    top: 42%;
   }
 
   .bottomHeader {
@@ -215,25 +268,28 @@ body {
     display: block;
   }
 
-  .fullHeader, .UpHeader {
+  .fullHeader {
     justify-content: space-between;
     padding: 0 1rem;
     width: 100vw;
+    height: 15vh;
   }
 
   .HeaderLogo {
     width: 10vw;
     height: 10vh;
-    padding-top: 7rem;
+    top: -25%;
+    left: 30%;
+    z-index: 999;
   }
   
   .Logo {
-    width: 250px;
-    height: 100px;
+    width: 280px;
+    height: 150px;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   /* .Logo {
     width: 150px;
     height: 100px;
@@ -241,10 +297,16 @@ body {
     margin-left: -30px;
   } */
 
+  body {
+    width: 100vw;
+    height: 100%;
+  }
+
   .HeaderRightSide {
-    margin-left: -13rem;
-    margin-top: 1rem;
-    gap: 2px;
+    margin-left: -20rem;
+    margin-top: 2px;
+    gap: 1.2rem;
+    width: 1px;
   }
 
   .HeaderText {
@@ -252,17 +314,33 @@ body {
   }
 
   .cartIconContainer {
-    width: 16px;
-    height: 16px;
+    width: 1px;
+    height: 1px;
     font-size: 10px;
-    margin-right: 15rem;
-    margin-top: -7px;
+    left: 90%;
+    top: 42%;
+    /* margin-right: 15rem; */
+    /* margin-top: -7px; */
+  }
+
+  .cartQuantity {
+    left: 3px;
+    top: -16px;
   }
 
   .mobileMenuIcon {
     font-size: 20px;
-    right: 20px;
-    top: 60px;
+    left: 1.5rem;
+    top: 46%;
+  }
+
+  .searchIcon{
+    left: 18%;
+    top: 46%;
+  }
+  .userIcons{
+    left: 78%;
+    top: 42%;
   }
 
    .fullHeader{
@@ -270,33 +348,34 @@ body {
     justify-content: space-between;
     padding: 0 1rem;
     width: 100vw;
-    height: 17vh;
+    height: 14vh;
   }
 
    .UpHeader {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    width: 100vw;
+    width: 1px;
   }
 
   .bottomHeader.open {
     height: auto;
-    margin-top: 30rem;
-    margin-left: 9rem;
+    margin-top: 85%;
+    margin-left: 2%;
     width: 50%;
   }
 
   .HeaderLogo {
-    width: 10vw;
+    width: 10%;
     height: 7vh;
-    padding-top: 7rem;
+    top: 1%;
+    left: 28%;
   }
   
   .Logo {
     width: 200px;
     height: 100px;
-    margin-top: 5px;
-    margin-left: -30px;
+    /* margin-top: -5px;
+    margin-left: 5.3rem; */
   }
 }

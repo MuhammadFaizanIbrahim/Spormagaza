@@ -1,0 +1,66 @@
+/* Bottom navigation bar styles */
+.bottom-nav-bar {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 60px; /* Set height for the BottomNavBar */
+    background-color: white;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays on top of other content */
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  /* Media query to show the BottomNavBar on mobile screens */
+  @media only screen and (max-width: 768px) {
+    .bottom-nav-bar {
+      display: flex; /* Show on mobile screens only */
+    }
+  }
+  
+  /* Style for navigation items */
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    color: black;
+    background-color: white;
+    border: none;
+    text-decoration: none; /* Remove default link styling */
+  }
+  
+  .nav-item svg {
+    font-size: 24px; /* Adjust icon size */
+    margin-bottom: 5px;
+  }
+  
+  .nav-item span {
+    font-size: 12px;
+  }
+  
+  .cartIconContainerNavbar {
+    left: 2rem;
+    top: 1rem;
+  }
+  
+  .cartQuantityNavbar {
+    background-color: inherit;
+    color: black;
+    border-radius: 50%;
+    padding: 2px 2px;
+    font-size: 12px;
+    position: absolute;
+    top: 1px;
+    right: 8.8rem;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
