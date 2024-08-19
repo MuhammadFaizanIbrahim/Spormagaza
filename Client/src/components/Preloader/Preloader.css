@@ -1,12 +1,13 @@
 .preLoader {
+    position: relative; /* Ensure that l-superballs can be absolutely positioned */
     height: 100%;
     width: 100%;
-    background: black;
+    background: white;
     color: #FFF;
     position: fixed;
     bottom: 0;
     left: 0;
-    right: 0;
+    right: 60%;
     z-index: 55;
     display: flex;
     justify-content: center;
@@ -39,11 +40,11 @@
   }
   
   .zoom-in {
-    animation: zoomIn 1s ease-in-out; /* Adjust animation duration as needed */
+    animation: zoomIn 0.5s ease-in-out; /* Adjust animation duration as needed */
   }
   
   .fade-out {
-    animation: fadeOut 0.5s ease-in-out forwards; /* Adjust animation duration as needed */
+    animation: fadeOut 0.3s ease-in-out forwards; /* Adjust animation duration as needed */
   }
   
   @keyframes rotateOnce {
@@ -71,5 +72,12 @@
     to {
       opacity: 0;
     }
+  }
+  
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust this value as needed */
   }
   

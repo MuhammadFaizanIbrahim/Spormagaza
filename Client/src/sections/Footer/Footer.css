@@ -1,19 +1,22 @@
 .fullFooter {
     width: 100vw;
     height: 70%; /* Adjust height as needed */
-    color: white;
+    color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* padding: 20px; */
 }
 
 .footerMain{
     display: flex;
-    background-color: black;
-    position: absolute;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+    background-color: #EFEFEF;
     width: 100vw;
     height: 60vh;
     border-top: 1px solid white;
+    /* gap: rem; */
 }
 
 .footer-logo {
@@ -44,9 +47,10 @@
 
 .footer-options {
     display: flex;
-    margin-top: 8rem;
-    color: white;
-    gap: 4rem;
+    margin-top: 4rem;
+    margin-left: 4rem;
+    color: black;
+    gap: 15rem;
 }
 
 .footer-column {
@@ -56,10 +60,10 @@
 
 .footer-column h4 {
     font-size: 20px;
-    color: white;
+    color: black;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
 }
 
 .footer-column ul {
@@ -69,19 +73,21 @@
 
 .footer-column ul li {
     /* margin-bottom: 8px; */
-    font-size: 12px;
+    font-size: 17px;
     line-height: 3rem;
+    font-weight: 400;
     text-align: left;
     cursor: pointer;
 }
 
 .li {
     /* margin-bottom: 8px; */
-    font-size: 12px;
+    font-size: 17px;
     line-height: 3rem;
+    font-weight: 400;
     text-align: left;
     cursor: pointer;
-    color: white;
+    color: black;
     text-decoration: none;
     text-align: center;
 }
@@ -92,7 +98,7 @@
 
 .footer-column2 h4 {
     font-size: 20px;
-    color: white;
+    color: black;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
@@ -110,7 +116,7 @@
 
 .footer-column3 h4 {
     font-size: 20px;
-    color: white;
+    color: black;
     margin-bottom: 0.5rem;
     text-transform: uppercase;
 }
@@ -123,124 +129,144 @@
 
 .footer-column3 li {
     margin-bottom: 5px; /* Adjust as needed */
+    font-size: 17px;
+    line-height: 3rem;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer;
+}
+
+.endTextFooter{
+    padding-top: 6rem;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
 }
 
 
 /* Tablet styles */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    /* .fullFooter {
+@media screen and (max-width: 768px) {
+    .fullFooter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 100vw;
-    } */
+        height: 100%;
+    }
+
     .footerMain {
         height: auto;
-        gap: 2rem;
-        padding: 2rem;
+        padding-top: 2rem;
+        display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        width: 100%;
     }
-
-     .footerLogo {
-        width: 10rem;
-        height: 5rem;
-        margin: 1rem;
-    }
-
     .footer-options {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         /* align-items: center; */
-        gap: 1px;
-        margin-left: 4.5rem;
-        margin-top: -1.5rem;
-        width: 100vw;
-        /* margin-bottom: 5rem; */
+        gap: 1rem;
+        margin: 0;
     }
 
-    .footer-column{
+    .footer-column,.footer-column2, .footer-column3 {
         width: 100%;
-        margin-right: 2rem;
-        padding-bottom: 3rem;
-    }
-    .footer-column2, .footer-column3 {
-        width: 80%;
         text-align: center;
-        padding-bottom: 3rem;
-        margin-left: -7rem;
+        /* padding-bottom: 3rem; */
+        /* margin-left: -7rem; */
     }
 
     .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
         font-size: 14px;
     }
 
-    .footer-column ul li{
-        font-size: 8px;
-        width: 17rem;
-        height: 1.5rem;
+    .footer-column ul, .footer-column3 ul{
+        margin-top: -5%;
+    } 
+
+    .footer-column ul li, .footer-column3 ul li{
+        font-size: 12px;
+        /* width: 17rem; */
+        height: 2rem;
+        text-align: center;
     }
-    
     .li {
-        font-size: 8px;
+        font-size: 12px;
         line-height: 1rem;
+    }
+    .endTextFooter{
+        padding-bottom: 6rem;
+        padding-top: 2rem;
+        font-size: 15px;
+        font-weight: 500;
+        text-align: center;
     }
 }
 
 /* Mobile styles */
 @media screen and (max-width: 480px) {
+    .fullFooter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100%;
+    }
+
     .footerMain {
         height: auto;
+        padding-top: 2rem;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        /* padding: 1rem; */
+        justify-content: center;
+        width: 100%;
     }
-
-    .footerLogo {
-        width: 10rem;
-        height: 5rem;
-        margin: 1rem 0;
-    }
-
     .footer-options {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         /* align-items: center; */
-        gap: 1px;
-        margin-left: 2rem;
-        margin-top: -0.2rem;
-        width: 100vw;
+        gap: 1rem;
+        margin: 0;
     }
 
-    .footer-column{
-        width: 150%;
-        margin-right: 2rem;
-        padding-bottom: 6rem;
-    }
-    .footer-column2 {
-        width: 20%;
+    .footer-column,.footer-column2, .footer-column3 {
+        width: 100%;
         text-align: center;
-        margin-left: -7rem;
-    }
-    .footer-column3 {
-        width: 20%;
-        text-align: center;
-        margin-left: -2rem;
+        /* padding-bottom: 3rem; */
+        /* margin-left: -7rem; */
     }
 
     .footer-column h4, .footer-column2 h4, .footer-column3 h4 {
         font-size: 14px;
     }
 
-    .footer-column ul li{
-        font-size: 7px;
-        width: 13.7rem;
-        height: 1.5rem;
-    }
-    
-    .footer-column2 .li{
-        margin-left: 20px;
-    }
+    .footer-column ul, .footer-column3 ul{
+        margin-top: -5%;
+    } 
 
+    .footer-column ul li, .footer-column3 ul li{
+        font-size: 12px;
+        /* width: 17rem; */
+        height: 2rem;
+        text-align: center;
+    }
     .li {
-        font-size: 7px;
+        font-size: 12px;
         line-height: 1rem;
-
+    }
+    .endTextFooter{
+        padding-bottom: 6rem;
+        padding-top: 2rem;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
     }
     
 }

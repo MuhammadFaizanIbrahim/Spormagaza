@@ -65,38 +65,30 @@ const Footer = () => {
   return (
     <div className="fullFooter">
       <div className='footerMain'>
-        <div className="footer-logo">
-          <Link className='footer-logo' to='/'>
-            {logoUrl ? (
-              <img src={logoUrl} className='footerLogo' alt="Spormagaza Logo" />
-            ) : (
-              'Loading...' // Fallback text or placeholder while loading the logo
-            )}
-          </Link>
-        </div>
         <div className="footer-options">
           {/* Contact Us column */}
           <div className="footer-column">
-            <h4>Bize Ulaşın</h4>
+            <h4>ALIŞVERİŞ BİLGİLERİ</h4>
             <ul>
-              <li><FaWhatsapp /> &nbsp; {contactInfo.phoneNumber1 || '+90 535 375 27 06'}</li>
-              <li><IoMdMail /> &nbsp; {contactInfo.email || 'info@spormagazatr.com'}</li>
-              <li><FaLocationDot /> &nbsp; {contactInfo.address || 'Street 6, Istanbul, Turkiye.'}</li>
+              <li>Siparişlerim</li>
+              <li>beğendiklerim</li>
+              <li>Kargo Takip</li>
+              <li>Hesabım</li>
             </ul>
           </div>
           {/* Navigation column */}
           <div className="footer-column2">
-            <h4>Navigasyon</h4>
+            <h4>KURUMSAL</h4>
             <ul>
-              <Link to='/' className='li' onClick={() => window.scrollTo(0, 0)}>Ana Sayfa</Link><br/>
-              <Link to='/contact' className='li' onClick={() => window.scrollTo(0, 0)}>Bize Ulaşın</Link><br/>
+              <Link to='/' className='li' onClick={() => window.scrollTo(0, 0)}>Hakkımızda</Link><br/>
+              <Link to='/contact' className='li' onClick={() => window.scrollTo(0, 0)}>İletişim</Link><br/>
             </ul>
           </div>
           {/* Categories column */}
           <div className="footer-column3">
-            <h4>Ürünlerimiz</h4>
+            <h4>ÖDEME YÖNTEMLERİ</h4>
             <ul>
-              {categories.length > 0 ? (
+              {/* {categories.length > 0 ? (
                 categories.map(category => (
                   <li key={category._id}>
                     <Link to={`/products?category=${category.name}`} className='li' onClick={() => window.scrollTo(0, 0)}>
@@ -105,11 +97,15 @@ const Footer = () => {
                   </li>
                 ))
               ) : (
-                <li>Loading...</li> // Fallback text or placeholder while loading categories
-              )}
+                <li>Loading...</li> 
+              )} */}
+              <li>Havale / EFT</li>
+              <li>İban Hesabımız</li>
+              <li>Whassap İletişim</li>
             </ul>
           </div>
         </div>
+        <div className='endTextFooter'> ©2024 SPORMAGAZATR.COM - TÜM HAKLARI SAKLIDIR. </div>
       </div>
       {/* <img src={heroImg} className="footerImage2" alt="Halil Tea" />
       <img src={heroImg3} className="footerImage3" alt="Halil Tea" /> */}

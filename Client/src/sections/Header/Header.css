@@ -1,100 +1,49 @@
-/* Basic reset for troubleshooting */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-/* Temporary overflow hidden to check for overflow */
 body {
   overflow: hidden;
   width: 100vw;
   height: 100%;
 }
 
-.cartIconContainer {
-  position: absolute;
-  left: 82rem;
-  top: 3.1rem;
-}
-
-.cartQuantity {
-  background-color: inherit;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 2px;
-  font-size: 12px;
-  position: absolute;
-  top: -13px;
-  right: -6px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.userIcons{
-  position: absolute;
-  top: 3.1rem;
-  right: 16.3rem;
-  font-size: 20px;
-  color: white;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-.searchIcon{
-  position: absolute;
-  top: 3.1rem;
-  right: 20rem;
-  font-size: 20px;
-  color: white;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.bagIcon,
-.mobileMenuIcon,
-.userIcons,
-.searchIcon {
-  font-size: 20px;
-  font-weight: 200; /* Adjust weight for even thinner look if needed */
-  color: white;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-
 .fullHeader {
-  width: 100%;
-  height: 22vh;
   position: sticky;
-  top: 0;
-  background-color: black;
-  backdrop-filter: blur(10px);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 12rem;
+  width: 100vw;
+  height: 22.5vh;
+  top: 0;
+  background-color: white;
   padding: 0 0 1rem 0;
   z-index: 999;
-  transition: background-color 0.3s ease;
 }
 
+
 .UpHeader {
-  width: 100%;
-  height: 6vh;
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15rem;
-  padding: 0 0 1.5rem 35rem;
-  z-index: 999;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  height: 100%;
+  gap: 22rem;
+}
+
+.leftSideIcons{
+  display: flex;
+  /* width: 100%; */
+}
+
+.rightSideIcons{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  /* width: 100%; */
 }
 
 .bottomHeader {
@@ -105,277 +54,551 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7rem;
-  margin-top: 8rem;
+  margin-top: 7.5rem;
+  margin-right: 1.05rem;
   z-index: 999;
   transition: background-color 0.3s ease;
-  border: 0.5px solid white;
+  border: 0.5px solid black;
 }
 
-.whiteBackground {
-  backdrop-filter: blur(1px);
-  background-color: black;
-}
-
-.HeaderleftSide {
-  width: 20vw;
-  height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7rem;
-}
-
-.HeaderRightSide {
-  width: 20vw;
-  height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: center;
-  gap: 3rem;
+.bottomHeader .bottomHeaderTitle{
+  display: none;
 }
 
 .HeaderLogo {
-  position: absolute;
-  width: 10vw;
-  height: 5vh;
-  top: -3rem;
-  right: 47rem;
+  /* position: absolute; */
+  width: 400px;
+  height: 250px;
+  margin-left: 10rem;
+  margin-bottom: 1rem;
+  /* top: -3rem;
+  right: 47rem; */
   cursor: pointer;
 }
 
 .Logo {
-  width: 290px;
-  height: 200px;
+  width: 350px;
+  height: 250px;
 }
 
 .HeaderText {
-  color: white;
-  font-size: 15px;
+  color: black;
+  font-size: 18px;
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap; /* Ensures text does not wrap */
   text-decoration: none; /* Remove underline */
 }
 
-.bagIcon {
-  font-size: 20px;
-  cursor: pointer;
-  color: white;
-}
-
-.whiteBackground .HeaderText,
-.whiteBackground .bagIcon {
-  color: black;
-}
-
 .cartQuantity {
-  background-color: white;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 2px;
+  font-size: 12px;
+  position: absolute;
+  top: 23%;
+  right: 4%;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bagIcon,
+.mobileMenuIcon,
+.userIcons,
+.searchIcon {
+  font-size: 25px;
+  font-weight: 200; /* Adjust weight for even thinner look if needed */
   color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.searchIcon{
+  width: 50px;
+  height: 50px;
+  margin-top: -2px;
+}
+
+.userIconss{
+  width: 35px;
+  height: 35px;
+}
+
+.bagIcons, .cartIcons{
+  width: 39px;
+  height: 39px;
+  margin-top: -2px;
 }
 
 .mobileMenuIcon {
   display: none;
-  font-size: 24px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
   z-index: 1000;
 }
 
+.leftSideIcons .searchIcon{
+  display: none;
+}
 
-@media (max-width: 768px) {
+.rightSideIcons .cartIcons{
+  display: none;
+}
+
+
+.searchBar {
+  position: absolute;
+  top: 110%; /* Start slightly off-screen */
+  right: 2%;
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px); /* Move up a bit */
+  transition: top 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When search bar is active/open */
+.searchBar.open {
+  top: 99%; /* Final position */
+  opacity: 1;
+  transform: translateY(0); /* Return to original position */
+}
+
+
+.searchBar input {
+  width: 82%;
+  height: 40px;
+  padding: 5px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.searchBar button {
+  height: 40px;
+  width: 70px;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+/* .cartIconContainer {
+  position: absolute;
+  left: 82rem;
+  top: 3.1rem;
+} */
+
+/* .bagIcon {
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+} */
+
+/* .userIcons{
+  position: absolute;
+  top: 3.1rem;
+  right: 16.3rem;
+}
+.searchIcon{
+  position: absolute;
+  top: 3.1rem;
+  right: 20rem;
+} */
+ 
+@media (max-width: 768px) { 
   body {
     width: 100vw;
     height: 100%;
   }
-  .HeaderleftSide {
+
+  .fullHeader {    
+    gap: 12rem;
+    width: 100vw;
+    height: 15.5vh;
+    padding-right: 2rem;
+    padding-left: 1rem;
+  }
+  
+  
+  .UpHeader {
+    width: 100%;
+    height: 100%;
+    gap: 8.3rem;
+    margin-top: 15px;
+  }
+  
+  .leftSideIcons{
+    display: flex;
+    gap: 0.5rem;
+    /* width: 100%; */
+  }
+
+  .leftSideIcons .searchIcon{
+    display: inline;
+  }
+  
+  .rightSideIcons{
+    gap: 0.3rem;
+    /* width: 100%; */
+  }
+  .rightSideIcons  .searchIcon{
     display: none;
-  }
-
-  .HeaderRightSide {
-    /* margin-left: -20rem; */
-    gap: 2px;
-  }
-
-  .cartIconContainer {
-    width: 16px;
-    height: 16px;
-    font-size: 20px;
-    top: 42%;
-    left: 84%;
-  }
-
-  .mobileMenuIcon {
-    display: block;
-    position: fixed;
-    left: 8%;
-    top: 42%;
-  }
-
-  .searchIcon{
-    left: -20%;
-    top: 42%;
-
-  }
-  .userIcons{
-    left: 75%;
-    top: 42%;
   }
 
   .bottomHeader {
     flex-direction: column;
     gap: 1rem;
-    margin-top: 50px;
-    display: none; /* Hide the menu initially */
-    width: 100%; /* Full width */
-    background-color: black; /* Black background */
-    padding: 1rem; /* Add some padding */
-    border-top: none; /* Remove top border */
-    border-bottom: none; /* Remove bottom border */
-    align-items: center; /* Center the items */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add transition for smooth opening */
-    transform: translateY(-100%); /* Initially move it up */
-    opacity: 0; /* Initially hidden */
+    display: none; 
+    width: 100%; 
+    background-color: white; 
+    padding: 1rem; 
+    border-top: none;
+    border-bottom: none; 
+    align-items: center; 
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+    transform: translateY(-100%);
+    opacity: 0;
   }
-
+  
   .bottomHeader.open {
-    display: flex; /* Show the menu when open */
-    transform: translateY(0); /* Slide down */
-    opacity: 1; /* Fully visible */
-    background-color: black;
-    height: auto;
-    margin-top: 25rem;
-    margin-left: 17.5rem;
-    width: 50%;
-    border: 1px solid white;
-    border-radius: 8px;
+    display: flex; 
+    align-items: center;
+    transform: translateY(0); 
+    opacity: 1; 
+    background-color: white;
+    height: 100vh; /* Adjust height as needed */
+    margin-top: 0;
+    margin-left: -56%;
+    width: 40%;
+    border: 2px solid black;
+    gap: 0; /* Adjust spacing */
+  }
+  .bottomHeader .bottomHeaderTitle{
+    display:inline;
+  }
+  .bottomHeaderTitle {
+    width: 100%;
+    background-color: gray;
+    color: white;
+    padding: 0.5rem;
+    margin-top: -64%;
+    margin-bottom: 20%;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid lightgray;
   }
 
   .HeaderText {
-    padding: 1rem; /* Add padding to each link */
-    text-align: center; /* Center the text */
-    width: 100%; /* Full width */
-    display: block; /* Block display */
-    border-bottom: 1px solid #ccc; /* Add a bottom border */
-    color: white;
+    position: relative;
+    padding: 1rem 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black; /* or any color you prefer */
+    width: 100%; /* Ensures full width of bottomHeader */
+    text-align: center; /* Center align the text */
   }
+  
+  .HeaderText:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px; /* Line thickness */
+    background-color: rgba(211, 211, 211, 0.5); /* Light gray line color with opacity */
+    width: 100%;
+    margin: 0.5rem 0; /* Space between the text and the line */
+  }
+  
+  .HeaderLogo {
+    width: 300px;
+    height: 200px;
+    margin-left: 0.5rem;
+    margin-top: 10px;
+    /* margin-bottom: 1rem; */
+
+  }
+  
+  .Logo {
+    width: 300px;
+    height: 200px;
+  }
+
+
+.bagIcon,
+.mobileMenuIcon,
+.userIcons,
+.searchIcon {
+  font-size: 25px;
+  font-weight: 200; /* Adjust weight for even thinner look if needed */
+}
+
+.searchIcon{
+  width: 33px;
+  height: 33px;
+  margin-top: -2px;
+}
+
+.userIconss{
+  width: 25px;
+  height: 25px;
+}
+
+.bagIcons, .cartIcons{
+  width: 29px;
+  height: 29px;
+  margin-top: -2px;
+}
+
+.cartQuantity {
+  font-size: 12px;
+  top: 23%;
+  right: 4%;
+  width: 25px;
+  height: 25px;
+
+}
 
 
   .mobileMenuIcon, .bottomHeader.open .mobileMenuIcon {
     display: block;
   }
 
-  .fullHeader {
-    justify-content: space-between;
-    padding: 0 1rem;
-    width: 100vw;
-    height: 15vh;
-  }
-
-  .HeaderLogo {
-    width: 10vw;
-    height: 10vh;
-    top: -25%;
-    left: 30%;
-    z-index: 999;
+  .searchBar {
+    top: 110%; /* Start slightly off-screen */
+    left: 2%;
+    width: 60%;
+    padding: 10px;
   }
   
-  .Logo {
-    width: 280px;
-    height: 150px;
+  .searchBar.open {
+    top: 99%; /* Final position */
   }
+  
+  
+  .searchBar input {
+    width: 82%;
+    height: 40px;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .searchBar button {
+    height: 40px;
+    width: 70px;
+    padding: 5px 10px;
+  }
+  
+  .rightSideIcons .bagIcons{
+    display: none;
+  }
+
+  .rightSideIcons .cartIcons{
+    display: inline;
+  }
+  
+
 }
 
-@media screen and (max-width: 480px) {
-  /* .Logo {
-    width: 150px;
-    height: 100px;
-    margin-top: 25px;
-    margin-left: -30px;
-  } */
+@media screen and (max-width: 730px) {
 
   body {
     width: 100vw;
     height: 100%;
   }
 
-  .HeaderRightSide {
-    margin-left: -20rem;
-    margin-top: 2px;
-    gap: 1.2rem;
-    width: 1px;
+  .fullHeader {    
+    gap: 12rem;
+    width: 100vw;
+    height: 11vh;
+  }
+  
+  
+  .UpHeader {
+    width: 100%;
+    height: 100%;
+    gap: 2.5rem;
+    margin-top: 15px;
+    padding-left: 0.2rem;
+    /* padding-right: 2rem;
+    padding-left: 1rem; */
+  }
+  
+  .leftSideIcons{
+    display: flex;
+    gap: 0.5rem;
+    /* width: 100%; */
+  }
+
+  .leftSideIcons .searchIcon{
+    display: inline;
+  }
+  
+  .rightSideIcons{
+    gap: 0.3rem;
+    margin-left: 7px;
+    /* width: 100%; */
+  }
+  .rightSideIcons  .searchIcon{
+    display: none;
+  }
+
+  .bottomHeader {
+    flex-direction: column;
+    gap: 1rem;
+    display: none; 
+    width: 100%; 
+    background-color: white; 
+    padding: 1rem; 
+    border-top: none;
+    border-bottom: none; 
+    align-items: center; 
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; 
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  .bottomHeader.open {
+    display: flex; 
+    align-items: center;
+    transform: translateY(0); 
+    opacity: 1; 
+    background-color: white;
+    height: 100vh; /* Adjust height as needed */
+    margin-top: 0;
+    margin-left: -32%;
+    width: 65%;
+    border: 2px solid black;
+    gap: 0; /* Adjust spacing */
+  }
+  .bottomHeader .bottomHeaderTitle{
+    display:inline;
+  }
+  .bottomHeaderTitle {
+    width: 113%;
+    background-color: gray;
+    color: white;
+    padding: 0.5rem;
+    margin-top: -87%;
+    margin-bottom: 10%;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid lightgray;
   }
 
   .HeaderText {
-    font-size: 12px;
+    position: relative;
+    padding: 1rem 0;
+    text-decoration: none;
+    font-size: 14px;
+    color: black; /* or any color you prefer */
+    width: 100%; /* Ensures full width of bottomHeader */
+    text-align: center; /* Center align the text */
   }
-
-  .cartIconContainer {
-    width: 1px;
-    height: 1px;
-    font-size: 10px;
-    left: 90%;
-    top: 42%;
-    /* margin-right: 15rem; */
-    /* margin-top: -7px; */
+  
+  .HeaderText:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px; /* Line thickness */
+    background-color: rgba(211, 211, 211, 0.5); /* Light gray line color with opacity */
+    width: 100%;
+    margin: 0.5rem 0; /* Space between the text and the line */
   }
-
-  .cartQuantity {
-    left: 3px;
-    top: -16px;
-  }
-
-  .mobileMenuIcon {
-    font-size: 20px;
-    left: 1.5rem;
-    top: 46%;
-  }
-
-  .searchIcon{
-    left: 18%;
-    top: 46%;
-  }
-  .userIcons{
-    left: 78%;
-    top: 42%;
-  }
-
-   .fullHeader{
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    width: 100vw;
-    height: 14vh;
-  }
-
-   .UpHeader {
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-    width: 1px;
-  }
-
-  .bottomHeader.open {
-    height: auto;
-    margin-top: 85%;
-    margin-left: 2%;
-    width: 50%;
-  }
-
+  
   .HeaderLogo {
-    width: 10%;
-    height: 7vh;
-    top: 1%;
-    left: 28%;
+    width: 220px;
+    height: 150px;
+    margin-left: -0.7rem;
+    margin-top: 10px;
+    /* margin-bottom: 1rem; */
+
   }
   
   .Logo {
-    width: 200px;
-    height: 100px;
-    /* margin-top: -5px;
-    margin-left: 5.3rem; */
+    width: 220px;
+    height: 150px;
   }
+
+
+.bagIcon,
+.mobileMenuIcon,
+.userIcons,
+.searchIcon {
+  font-size: 22px;
+  font-weight: 200; /* Adjust weight for even thinner look if needed */
 }
+
+.searchIcon{
+  width: 28px;
+  height: 28px;
+  margin-top: -1px;
+}
+
+.userIconss{
+  width: 21px;
+  height: 21px;
+}
+
+.bagIcons, .cartIcons{
+  width: 22px;
+  height: 22px;
+  margin-top: 0;
+}
+
+.cartQuantity {
+  font-size: 12px;
+  top: 20%;
+  right: 2.2%;
+  width: 20px;
+  height: 20px;
+
+}
+
+
+  .mobileMenuIcon, .bottomHeader.open .mobileMenuIcon {
+    display: block;
+  }
+
+  .searchBar {
+    top: 112%; /* Start slightly off-screen */
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    border-radius: 0;
+  }
+  
+  .searchBar.open {
+    top: 99%; /* Final position */
+  }
+  
+  
+  .searchBar input {
+    width: 75%;
+    height: 40px;
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .searchBar button {
+    height: 40px;
+    width: 70px;
+    padding: 5px 10px;
+  }
+
+  .rightSideIcons .cartIcons{
+    display: inline;
+  }
+  
+  .rightSideIcons .bagIcons{
+    display: none;
+  }
+} 

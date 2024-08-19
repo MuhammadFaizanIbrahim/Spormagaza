@@ -52,15 +52,15 @@ const Contact = () => {
     <div className='fullContact' data-aos='fade-up'>
       <span className='contactName' data-aos='fade-up'>Bize Ulaşın</span>
       <div className="line">
-        <span className='main'> Phone Number: </span> 
+        <span className='main'> Telefon Numarası: </span> 
         <span className='val'> {info?.phoneNumber1 || '+90 535 375 27 06'} </span>
       </div>
       <div className="line">
-        <span className='main'> Email: </span> 
+        <span className='main'> E-Posta: </span> 
         <span className='val'> {info?.email || 'info@spormagazatr.com'} </span>
       </div>
       <div className="line">
-        <span className='main'>Address: </span> 
+        <span className='main'>Adres: </span> 
         <span className='val'> {info?.address || 'Street 6, Istanbul, Turkiye.'} </span>
       </div>
     </div>

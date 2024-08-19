@@ -20,16 +20,16 @@ const CartPage = () => {
 
   const handleCheckout = () => {
 
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+    // const user = localStorage.getItem('user');
+    // const token = localStorage.getItem('token');
   
-    if (user && token) {
-      navigate('/checkout');
-    } else {
-      // Optionally, redirect to login page or show an alert
-      alert('Please log in to proceed to Checkout Page.');
-      navigate('/login'); // Redirect to login page
-    }
+    navigate('/checkout');
+    // if (user && token) {
+    // } else {
+    //   // Optionally, redirect to login page or show an alert
+    //   alert('Please log in to proceed to Checkout Page.');
+    //   navigate('/login'); // Redirect to login page
+    // }
   };
 
   return (

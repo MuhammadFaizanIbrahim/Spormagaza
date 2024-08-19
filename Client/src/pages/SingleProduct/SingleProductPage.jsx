@@ -6,6 +6,10 @@ import MoreProducts from '../../sections/MoreProducts/MoreProducts';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useCart } from '../../components/CartContext';
+import sizeTable from '../../assets/images/st.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faPinterest  } from '@fortawesome/free-brands-svg-icons';
+
 
 const SingleProductPage = () => {
   const { id } = useParams();
@@ -54,28 +58,28 @@ const SingleProductPage = () => {
   };
 
   const handleAddToCart = () => {
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+    // const user = localStorage.getItem('user');
+    // const token = localStorage.getItem('token');
   
-    if (user && token) {
-      addToCart({ ...product, quantity, selectedSize });
-    } else {
-      alert('Sepetinize ürün eklemek için lütfen giriş yapın.');
-      navigate('/login');
-    }
+    addToCart({ ...product, quantity, selectedSize });
+    // if (user && token) {
+    // } else {
+    //   alert('Sepetinize ürün eklemek için lütfen giriş yapın.');
+    //   navigate('/login');
+    // }
   };
 
   const handleBuyNow = () => {
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+    // const user = localStorage.getItem('user');
+    // const token = localStorage.getItem('token');
   
-    if (user && token) {
+    // if (user && token) {
       addToCart({ ...product, quantity, selectedSize });
       navigate('/checkout');
-    } else {
-      alert('Sepetinize ürün eklemek için lütfen giriş yapın.');
-      navigate('/login');
-    }
+    // } else {
+    //   alert('Sepetinize ürün eklemek için lütfen giriş yapın.');
+    //   navigate('/login');
+    // }
   };
 
   const handleSizeSelect = (size) => {
@@ -103,6 +107,32 @@ const SingleProductPage = () => {
   const isOutOfStock = getStockCount(selectedSize) === 0;
   const isMaxQuantity = quantity >= getStockCount(selectedSize);
 
+  const handleShare = (platform) => {
+    let url = '';
+    const productUrl = window.location.href; // Use the current URL of the product page
+    const shareText = `Check out this product: ${product.name}`;
+    const productImage = product.images[0]; // Assuming you want to share the first image
+
+    switch (platform) {
+      case 'facebook':
+        url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(productUrl)}`;
+        break;
+      case 'twitter':
+        url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(productUrl)}&text=${encodeURIComponent(shareText)}`;
+        break;
+        case 'instagram':
+          url = 'https://www.instagram.com/';
+          break;
+        case 'pinterest':
+            url = `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(productUrl)}&media=${encodeURIComponent(productImage)}&description=${encodeURIComponent(shareText)}`;
+        break;
+      default:
+        return;
+    }
+
+    window.open(url, '_blank');
+  };
+
   if (!product) {
     return <div>Loading...</div>;
   }
@@ -125,9 +155,22 @@ const SingleProductPage = () => {
           </div>
           <div className="product-details">
             <div className="productTitleAndPrice">
+              <h1 className="product-brand">{product.brand}</h1>
               <h1 className="product-title">{product.name}</h1>
               <p className="product-stock">{isOutOfStock ? 'Stoklar Tükendi' : 'Stokta var'}</p>
-              <p className="product-price">₺{product.price}</p>
+              {/* <h1 className="product-notice">SİPARİŞ VERMEDEN ÖNCE MUTLAKA OKUYUNUZ SİPARİŞ VERİLEN ÜRÜNLER 29.08.2024 TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.</h1> */}
+              <img src={sizeTable} className='sizeTable' alt='size' />
+              <p className="product-price">₺{product.price},00</p>
+              <div className="share-now">
+            <div className="social-icons">
+            <span style={{color: 'gray'}}>PAYLAŞ:</span>
+              <FontAwesomeIcon icon={faFacebook} onClick={() => handleShare('facebook')} className="social-icon" />
+              <FontAwesomeIcon icon={faTwitter} onClick={() => handleShare('twitter')} className="social-icon" />
+              <FontAwesomeIcon icon={faInstagram} onClick={() => handleShare('instagram')} className="social-icon" />
+              <FontAwesomeIcon icon={faPinterest} onClick={() => handleShare('pinterest')} className="social-icon" />
+            </div>
+          </div>
+          <hr className="share-line" />
             </div>
             <div className="productButtons">
               <div className="sizeSelector">
@@ -141,6 +184,7 @@ const SingleProductPage = () => {
                   </div>
                 ))}
               </div>
+              <div className="threeButtons">
               <div className={`quantity-selector ${isOutOfStock ? 'disabled-quantity-btn' : ''}`} disabled={isOutOfStock}>
                 <button
                   className={`quantity-button ${isOutOfStock ? 'disabled-quantity-btn' : ''}`}
@@ -172,13 +216,24 @@ const SingleProductPage = () => {
               >
                 Şimdi al
               </button>
+              </div>
+              <button
+                className={`btn buy-now-below ${isOutOfStock ? 'disabled-btn' : ''}`}
+                onClick={handleBuyNow}
+                disabled={isOutOfStock}
+              >
+                Şimdi al
+              </button>
             </div>
           </div>
         </div>
+        <hr className="share-line2" />
         <div className="productDescriptionDiv">
+        <span className='descHeading'>Ürün Özellikleri:</span>
           <div className="product-description" dangerouslySetInnerHTML={{ __html: product.description }} />
         </div>
       </div>
+      <hr className="share-line3" />
       <div className="more-products-container">
         <MoreProducts />
       </div>

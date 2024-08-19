@@ -62,7 +62,7 @@ const CheckoutPage = () => {
 
   const user = localStorage.getItem('user');
   const isCartEmpty = cart.length === 0;
-  const isDisabled = !user || isCartEmpty;
+  const isDisabled = isCartEmpty;
 
   const handleSubmit = async (e, paymentMethod = null) => {
     if (isDisabled || isSubmitting) return;
@@ -79,13 +79,15 @@ const CheckoutPage = () => {
           quantity: item.quantity,
         }));
   
+        const userId = "66afafa0216d098ce9ad7e80"; // Example user ID, replace with actual user ID
+
         const orderData = {
           orderItems,
           shippingAddress: form,
           paymentMethod: form.paymentMethod,
           itemsPrice: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
           totalPrice: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-          user: JSON.parse(localStorage.getItem('user'))?.userId
+          user: userId
         };
   
         const savedOrder = await postData('/api/orders/create', orderData);

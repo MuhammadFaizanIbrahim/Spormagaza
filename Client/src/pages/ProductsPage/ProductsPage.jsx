@@ -32,7 +32,7 @@ const ProductsPage = () => {
       const minPrice = getMinPrice(res);
       const maxPrice = getMaxPrice(res);
       setFilterOptions((prev) => ({ ...prev, priceRange: [minPrice, maxPrice] }));
-      updateDisplayedProducts(res, 9); // Set initial display to 9 products
+      updateDisplayedProducts(res, 16); // Set initial display to 9 products
     });
 
     fetchDataFromApi("/api/category").then((res) => {
@@ -55,7 +55,7 @@ const ProductsPage = () => {
 
   const handleLoadMore = () => {
     setProductsToDisplay((prev) => {
-      const newDisplayCount = prev + 3; // Add 3 more products
+      const newDisplayCount = prev + 4; // Add 3 more products
       return newDisplayCount;
     });
   };
@@ -115,6 +115,19 @@ const ProductsPage = () => {
     navigate(`/product/${productId}`);
   };
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const searchTerm = queryParams.get('search');
+    
+    if (searchTerm) {
+      const filteredProducts = allProducts.filter(product =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setDisplayedProducts(filteredProducts);
+    }
+  }, [location.search, allProducts]);
+  
+
   return (
     <div className="products-page" data-aos='fade-up'>
       <h2>Bizim ürünlerimiz</h2>
@@ -167,6 +180,11 @@ const ProductsPage = () => {
           </div>
         </div>
       )}
+
+        {/* Show "No products found" message if no products are displayed */}
+        {displayedProducts.length === 0 && (
+              <p>No products found</p>
+            )}
 
       <div className="products-grid">
         {displayedProducts.map((item) => (

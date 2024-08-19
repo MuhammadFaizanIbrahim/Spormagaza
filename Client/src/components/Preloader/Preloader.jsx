@@ -1,34 +1,43 @@
 import React, { useEffect } from 'react';
 import './Preloader.css';
-import logo from '../../assets/images/DGLogo3.png';
+import logo from '../../assets/images/splogo.png';
+import { lineSpinner } from 'ldrs';
 import { preLoaderAnim } from './index.js';
+
+
+lineSpinner.register(); // Register the spinner component
+
 
 const PreLoader = () => {
   useEffect(() => {
-    preLoaderAnim(); // Assuming this handles other animations
+    preLoaderAnim(); // Your existing animation logic
 
-    // Adding rotation, zoom-in, and fade-out animations for the logo
-    const img = document.querySelector('.img-container img');
-    img.classList.add('rotate-once', 'zoom-in');
+    // const img = document.querySelector('.img-container img');
+    // img.classList.add('rotate-once', 'zoom-in');
 
-    // Delay the addition of the fade-out class to ensure it happens after the zoom-in animation
-    setTimeout(() => {
-      img.classList.add('fade-out');
-    }, 2000); // Adjust the delay to match the duration of the zoom-in animation
+    // setTimeout(() => {
+    //   img.classList.add('fade-out');
+    // }, 2000);
 
-    return () => {
-      // Clean up if needed
-      img.classList.remove('rotate-once', 'zoom-in', 'fade-out');
-    };
+    // return () => {
+    //   img.classList.remove('rotate-once', 'zoom-in', 'fade-out');
+    // };
   }, []);
 
   return (
     <div className="preLoader">
-      <div className="img-container">
-        <img src={logo} alt="Logo" style={{ height: "250px", width: "350px" }} />
+      <div className="spinner-container">
+        <l-line-spinner
+          size="40"
+          stroke="3"
+          speed="1"
+          color="black"
+        ></l-line-spinner>
       </div>
+      {/* <div className="img-container"> */}
+        {/* <img src={logo} alt="Logo" style={{ height: "250px", width: "350px" }} /> */}
+      {/* </div> */}
       <div className="text-container">
-        {/* <span className='text_md'>Eden Rose The School System</span> */}
       </div>
     </div>
   );

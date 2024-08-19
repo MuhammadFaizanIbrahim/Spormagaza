@@ -1,0 +1,43 @@
+.fullSocial {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-top: 1px solid black ;
+  }
+  
+  .socialItem {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #000;
+  }
+  
+  .socialIcon {
+    font-size: 24px; /* Adjust size of the icon */
+    margin-right: 5px;
+    color: black; /* Instagram's brand color */
+  }
+  
+  .socialText {
+    font-weight: 500;
+    font-size: 17px;
+  }
+
+@media screen and (max-width: 768px) {
+  .fullSocial {
+    width: 100vw;
+  }
+  .socialIcon {
+    font-size: 24px; /* Adjust size of the icon */
+    margin-right: 5px;
+    color: black; /* Instagram's brand color */
+  }
+  
+  .socialText {
+    font-weight: 500;
+    font-size: 15px;
+  }
+}
+  

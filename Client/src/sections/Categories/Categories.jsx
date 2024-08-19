@@ -22,7 +22,6 @@ const CategoriesPage = () => {
 
   return (
     <div className="categories-page">
-      <h1 className="categories-heading">Kategorilerimiz</h1>
       <div className="categories-container">
         {categories.length !== 0 && categories.map((category, index) => (
           <Link

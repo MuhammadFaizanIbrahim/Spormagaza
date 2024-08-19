@@ -26,7 +26,7 @@ const Products = () => {
       if (window.innerWidth <= 480) {
         setCardsToShow(2);
       } else if (window.innerWidth <= 768) {
-        setCardsToShow(2);
+        setCardsToShow(3);
       } else {
         setCardsToShow(4);
       }
@@ -43,7 +43,7 @@ const Products = () => {
   // Auto slide effect for tablet and mobile
   useEffect(() => {
     const autoSlide = setInterval(() => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 2000) {
         handleNext();
       }
     }, 2000);
@@ -142,18 +142,16 @@ const Products = () => {
 
   return (
     <div className="homePage-products-section">
-      <h2 data-aos='fade-up'>BİZİM ÜRÜNLERİMİZ</h2>
-      <h1 data-aos='fade-up'>EN ÇOK SATAN KİTAP</h1>
+      <h2>EN ÇOK SATANLAR</h2>
       <div
         className="homePage-slider-container"
-        data-aos='fade-up'
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        <button className="homePage-slider-arrow left" onClick={handlePrev} disabled={currentIndex === 0}>
+        {/* <button className="homePage-slider-arrow left" onClick={handlePrev} disabled={currentIndex === 0}>
           <FaArrowLeft />
-        </button>
-        <div className="homePage-products-row" data-aos='fade-up'>
+        </button> */}
+        <div className="homePage-products-row">
           {displayedProducts.map((item, index) => (
             <div key={index} className="homePage-product-card" onClick={() => handleCardClick(item._id)}>
               <img src={item.images[0]} alt={item.name} />
@@ -162,9 +160,11 @@ const Products = () => {
             </div>
           ))}
         </div>
-        <button className="homePage-slider-arrow right" onClick={handleNext} disabled={currentIndex >= featuredProducts.length - cardsToShow}>
+        {/* <button className="homePage-slider-arrow right" onClick={handleNext} disabled={currentIndex >= featuredProducts.length - cardsToShow}>
           <FaArrowRight />
-        </button>
+        </button> */}
+         <button className="prevProd" onClick={handlePrev} disabled={currentIndex === 0}>&#10094;</button>
+          <button className="nextProd" onClick={handleNext} disabled={currentIndex >= featuredProducts.length - cardsToShow}>&#10095;</button>
       </div>
     </div>
   );

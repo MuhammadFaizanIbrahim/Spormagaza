@@ -1,8 +1,9 @@
 // src/components/BottomNavBar/BottomNavBar.jsx
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { FaHome, FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import { FiHome, FiShoppingCart, FiMenu, FiX, FiUser, FiSearch } from "react-icons/fi";
+import user from '../../assets/images/user2.png'
+import Cart from '../../assets/images/cart.png'
+import { FiHome, FiShoppingCart, FiMenu, FiX, FiUser, FiSearch, FiHeart } from "react-icons/fi";
 
 import './BottomNavbar.css';
 import { useCart } from '../../components/CartContext';
@@ -16,12 +17,12 @@ const BottomNavBar = () => {
     const userExists = localStorage.getItem('user');
     const tokenExists = localStorage.getItem('token');
     const handleCartClick = () => {
-        if (userExists && tokenExists) {
-          navigate('/cart');
-        } else {
-          alert('Please log in to view your cart.');
-          navigate('/login');
-        }
+      navigate('/cart');
+        // if (userExists && tokenExists) {
+        // } else {
+        //   alert('Please log in to view your cart.');
+        //   navigate('/login');
+        // }
       };
 
 
@@ -36,18 +37,18 @@ const BottomNavBar = () => {
     <div className="bottom-nav-bar">
       <NavLink to="/" className="nav-item">
         <FiHome />
-        <span>Home</span>
+        <span>Ana Sayfa</span>
       </NavLink>
-      <NavLink to="/" className="nav-item">
-        <FiSearch />
-        <span>Search</span>
+          <NavLink to="/" className="nav-item">
+          <FiHeart />
+          <span>Favoriler</span>
       </NavLink>
-      <div className='cartIconContainerNavbar'>
+      <div className='cartIconContainerNavbar' onClick={handleCartClick}>
             <button className='nav-item' style={{ color: "black", backgroundColor: 'transparent', border: 'none' }} onClick={handleCartClick}>
-              <FiShoppingCart />
-        <span>Cart</span>
+            <img src={Cart} className='nav-item-cart'/>
+        <span>Sepet</span>
             </button>
-            {userExists && totalQuantity > 0 && (
+            {totalQuantity > 0 && (
               <button className="cartQuantityNavbar" onClick={handleCartClick}>
                 {totalQuantity}
               </button>
@@ -58,9 +59,9 @@ const BottomNavBar = () => {
         <span>Profile</span>
       </NavLink> */}
       {isLoggedIn ? (
-          <button  className="nav-item" onClickCapture={logout}>
-          <FiUser />
-          <span>Profile</span>
+          <button className="nav-item" onClickCapture={logout}>
+          <img src={user} className="nav-item-user"/>
+          <span>Profil</span>
         </button>
         ) : (
           <Link
@@ -68,9 +69,9 @@ const BottomNavBar = () => {
             className='nav-item'
             onClick={() => window.scrollTo(0, 0)}
           >
-            <button  className="nav-item">
-          <FiUser />
-          <span>Profile</span>
+            <button className="nav-item">
+            <img src={user}  className="nav-item-user"/>
+            <span>Profil</span>
         </button>
           </Link>
         )}

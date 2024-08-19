@@ -3,6 +3,7 @@ import Hero from '../../sections/HeroSection/Hero'
 import Products from '../../sections/ProductsSection/ProductsSection'
 import { useLocation } from 'react-router-dom';
 import CategoriesPage from '../../sections/Categories/Categories'
+import Social from '../../sections/SocialMedia/Social';
 
 
 const Homepage = () => {
@@ -18,6 +19,7 @@ const Homepage = () => {
         {/* <Desc /> */}
         <CategoriesPage />
         <Products />
+        <Social />
         {/* <HomeDesignSec /> */}
     </div>
   )

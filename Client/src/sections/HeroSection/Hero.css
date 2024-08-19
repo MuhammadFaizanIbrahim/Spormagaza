@@ -1,100 +1,90 @@
+.hero-section {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  height: 90vh; /* Full viewport height */
+}
 
-.hero-title {
-  width: 50%;
+.heroImage-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.heroImage {
   position: absolute;
-  font-size: 4rem;
-  margin-top: 17rem;
-  margin-left: 45rem;
-  color: white;
-  z-index: 1;
-  opacity: 0; /* Start invisible */
-  transition: opacity 1s ease-out; /* Smooth transition for opacity */
-  text-align: center;
-  line-height: 4.3rem;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
 }
 
-.heroImage.animate {
-  opacity: 1;
+.heroImage.visible {
+  left: 0;
+  transform: translateX(0%);
 }
 
-.heroImage-container.animating .heroImage {
-  animation: slideFade 1s ease-in-out;
+.heroImage.hidden {
+  left: -100%;
+  transform: translateX(-100%);
 }
 
-@keyframes slideFade {
-  0% { opacity: 0; transform: translateX(100%); }
-  50% { opacity: 1; transform: translateX(0); }
-  100% { opacity: 0; transform: translateX(-100%); }
+.heroImage-container .animating.visible {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.heroImage-container .animating.hidden {
+  animation: slideOut 0.5s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .prev, .next {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 24px;
+  color: black;
+  font-weight: 300;
+  font-size: 25px;
+  width: 50px;
+  height: 45px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   border: none;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20%;
+  background-color: white;
   user-select: none;
 }
 
 .next {
-  right: 20px;
+  right: 40px;
 }
 
 .prev {
   left: 20px;
 }
 
-.hero-section {
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  padding-right: 1rem;
-  height: 90vh;
-}
-
-.heroImage-container {
-  display: flex;
-  justify-content: space-between;
-  transition: transform 0.5s ease-in-out;
-}
-
-.heroImage {
-  width: calc(33.33% - 10px); /* 3 images with a white border in between */
-  border: 5px solid white;
-}
-
-/* .prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-} */
-
-
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-  /* transform: scale(1.1); */
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 /* Tablet styles */
@@ -102,43 +92,46 @@
   .prev, .next {
     font-size: 20px;
     padding: 12px;
-    top: 50%;
+    display: none;
   }
-.hero-section {
-  padding: 0;
-  height: 40%;
-}
+
+  .hero-section {
+    height: 55vh; /* Adjust height for tablets */
+    width: 100vw;
+  }
   .heroImage-container {
     width: 100%;
-    height: 38vh;  
-    top: 8%;
+    height: 100%;
   }
+  
   .heroImage {
-    width: calc(33.33% - 2px); /* 3 images with a white border in between */
-    border: 1px solid white;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
   }
 }
 
 /* Mobile styles */
 @media screen and (max-width: 480px) {
   .hero-section {
-    max-width: 100%;
-    height: 35%;
-    padding-right: 1px;
+    height: 24vh; /* Adjust height for mobile */
+    width: 100vw;
   }
 
   .prev, .next {
     font-size: 18px;
     padding: 10px;
   }
-
   .heroImage-container {
     width: 100%;
-    height: 26vh;  
-    top: 0%;
+    height: 100%;
   }
+  
   .heroImage {
-    width: calc(33.33% - 2px); /* 3 images with a white border in between */
-    border: 1px solid white;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
   }
 }
