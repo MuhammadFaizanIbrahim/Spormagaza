@@ -67,9 +67,9 @@ body {
 
 .HeaderLogo {
   /* position: absolute; */
-  width: 400px;
-  height: 250px;
-  margin-left: 10rem;
+  width: 250px;
+  height: 180px;
+  margin-left: 7rem;
   margin-bottom: 1rem;
   /* top: -3rem;
   right: 47rem; */
@@ -77,8 +77,8 @@ body {
 }
 
 .Logo {
-  width: 350px;
-  height: 250px;
+  width: 250px;
+  height: 180px;
 }
 
 .HeaderText {
@@ -87,21 +87,32 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   cursor: pointer;
-  white-space: nowrap; /* Ensures text does not wrap */
+  white-space: nowrap;
   text-decoration: none; /* Remove underline */
+  display: inline-block;
+  padding: 0.5rem 0.3rem; /* Adjust padding instead of margin */
+  line-height: 1.5; /* Ensure vertical alignment */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Add transition */
 }
+
+.HeaderText:hover {
+  color: white;
+  background-color: black;
+  padding: 0.5rem 0.3rem;
+}
+
 
 .cartQuantity {
   background-color: black;
   color: white;
   border-radius: 50%;
   padding: 2px 2px;
-  font-size: 12px;
+  font-size: 9px;
   position: absolute;
-  top: 23%;
-  right: 4%;
-  width: 25px;
-  height: 25px;
+  top: 28%;
+  right: 11.9%;
+  width: 20px;
+  height: 20px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -120,19 +131,19 @@ body {
 }
 
 .searchIcon{
-  width: 50px;
-  height: 50px;
+  width: 27px;
+  height: 27px;
   margin-top: -2px;
 }
 
 .userIconss{
-  width: 35px;
-  height: 35px;
+  width: 22px;
+  height: 22px;
 }
 
 .bagIcons, .cartIcons{
-  width: 39px;
-  height: 39px;
+  width: 26px;
+  height: 26px;
   margin-top: -2px;
 }
 

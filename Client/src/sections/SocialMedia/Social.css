@@ -12,8 +12,12 @@
     align-items: center;
     font-size: 16px;
     color: #000;
-  }
-  
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 20px; /* Increase padding for a larger clickable area */
+}
+
+
   .socialIcon {
     font-size: 24px; /* Adjust size of the icon */
     margin-right: 5px;
@@ -23,6 +27,7 @@
   .socialText {
     font-weight: 500;
     font-size: 17px;
+    text-decoration: none;
   }
 
 @media screen and (max-width: 768px) {
@@ -38,6 +43,7 @@
   .socialText {
     font-weight: 500;
     font-size: 15px;
+    text-decoration: none;
   }
 }
   

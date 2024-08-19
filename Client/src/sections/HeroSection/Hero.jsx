@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 import axios from 'axios';
 
@@ -12,12 +13,14 @@ const Hero = () => {
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/slider-images`);
-        const images = response.data.slice(0, 3).map(image => image.imageUrl);
+        const images = response.data.map(image => image.imageUrl);
         setSlides(images);
       } catch (error) {
         console.error('Error fetching slider images:', error);
@@ -63,11 +66,15 @@ const Hero = () => {
     }
   };
 
+  const handleClickHero = () => {
+    navigate('/products');
+  }
+
   return (
     <div className="hero-section" ref={heroRef}>
       {slides.length > 0 && (
         <>
-          <div className="heroImage-container">
+          <div className="heroImage-container" onClick={handleClickHero}>
             {slides.map((slide, index) => (
               <img
                 key={index}

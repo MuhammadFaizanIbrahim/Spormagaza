@@ -144,9 +144,9 @@ const Header = () => {
             type="text"
             value={searchQuery}
             onChange={handleSearchInputChange}
-            placeholder="Search products..."
+            placeholder="Arama"
           />
-          <button onClick={performSearch}>Search</button>
+          <button onClick={performSearch}>Ara</button>
         </div>
       )}
 
@@ -183,9 +183,9 @@ const Header = () => {
           type="text"
           value={searchQuery}
           onChange={handleSearchInputChange}
-          placeholder="Search products..."
+          placeholder="Arama"
         />
-        <button onClick={performSearch}>Search</button>
+        <button onClick={performSearch}>Ara</button>
       </div>
 
          <div className='cartIconContainer'>
@@ -194,29 +194,29 @@ const Header = () => {
             <img src={Cart} className='cartIcons'/>
             </button>
             {/* {userExists && totalQuantity > 0 && ( */}
-            {totalQuantity > 0 && (
+            {/* {totalQuantity > 0 && ( */}
               <button className="cartQuantity" onClick={handleCartClick}>
                 {totalQuantity}
               </button>
-            )}
+            {/* )} */}
           </div>
           </div>
           </div>
-     <div className={`bottomHeader ${isMobileMenuOpen ? 'open' : ''}`}>
-  <div className="bottomHeaderTitle">Menu</div>
-  <Link to='/' className='HeaderText' onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}>Ana Sayfa</Link>
-  {categories.map(category => (
-    <Link 
-      key={category._id} 
-      to={`/products?category=${category.name}`} 
-      className='HeaderText' 
-      onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}
-    >
-      {category.name}
-    </Link>
-  ))}
-  <Link to='/contact' className='HeaderText' onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}>İletişim</Link>
-</div>
+          <div className={`bottomHeader ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="bottomHeaderTitle">Menü</div>
+          <Link to='/' className='HeaderText' onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}>Ana Sayfa</Link>
+          {categories.map(category => (
+            <Link 
+              key={category._id} 
+              to={`/products?category=${category.name}`} 
+              className='HeaderText' 
+              onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}
+            >
+              {category.name}
+            </Link>
+          ))}
+          <Link to='/contact' className='HeaderText' onClick={() => { window.scrollTo(0, 0); toggleMobileMenu(); }}>İletişim</Link>
+        </div>
 
     </div>
   );

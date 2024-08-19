@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Grid, Button, Alert } from '@mui/material';
-import { postData } from '../utils/api';
+import { Container, Typography, Grid, Button, Alert, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { postData, deleteData } from '../utils/api'; // Assuming deleteData is similar to your Categories component
 import axios from 'axios';
 
 const SliderImages = () => {
     const [sliderImages, setSliderImages] = useState([]);
     const [message, setMessage] = useState('');
     const [severity, setSeverity] = useState('success');
+    const [openDialog, setOpenDialog] = useState(false);
+    const [selectedImageId, setSelectedImageId] = useState(null);
 
     useEffect(() => {
         // Fetch existing slider images
         const fetchSliderImages = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/slider-images`);
-                console.log(response.data); // Check if _id is included
-                setSliderImages(response.data.slice(0, 3)); // Limit to 3 images
+                setSliderImages(response.data);
             } catch (err) {
                 setSeverity('error');
                 setMessage('Failed to fetch slider images');
@@ -26,30 +27,19 @@ const SliderImages = () => {
 
     const handleFileChange = (e, index) => {
         const selectedFile = e.target.files[0];
-
-        // Update the file for the specific image slot
         const updatedSliderImages = [...sliderImages];
         updatedSliderImages[index] = {
             ...updatedSliderImages[index],
             file: selectedFile,
         };
-
         setSliderImages(updatedSliderImages);
     };
 
     const handleUpdateSliderImage = async (index) => {
         const image = sliderImages[index];
-        console.log('Image Data:', image); // Check if _id is present
-
-        if (!image._id) {
+        if (!image._id || !image.file) {
             setSeverity('error');
-            setMessage(`No ID found for slider image ${index + 1}`);
-            return;
-        }
-
-        if (!image.file) {
-            setSeverity('error');
-            setMessage(`No file selected for slider image ${index + 1}`);
+            setMessage(`No file selected or ID found for slider image ${index + 1}`);
             return;
         }
 
@@ -62,10 +52,76 @@ const SliderImages = () => {
             setMessage(`Slider image ${index + 1} successfully updated`);
         } catch (err) {
             setSeverity('error');
-            console.error(err);
             setMessage(`Failed to update slider image ${index + 1}`);
         }
     };
+
+    const handleAddSliderImage = () => {
+        const newImage = { file: null }; // Placeholder for new image
+        setSliderImages([...sliderImages, newImage]);
+    };
+
+    const handleDeleteClick = (id) => {
+        setSelectedImageId(id);
+        setOpenDialog(true);
+    };
+
+    const handleConfirmDelete = async () => {
+        try {
+            await deleteData(`/api/slider-images/${selectedImageId}`);
+            setSliderImages(sliderImages.filter(item => item._id !== selectedImageId));
+            setSeverity('success');
+            setMessage('Slider image successfully deleted');
+            setOpenDialog(false);
+        } catch (err) {
+            setSeverity('error');
+            setMessage('Failed to delete slider image');
+        }
+    };
+
+    const handleCancelDelete = () => {
+        setOpenDialog(false);
+        setSelectedImageId(null);
+    };
+
+    const handleSaveNewImage = async (index) => {
+        const image = sliderImages[index];
+        if (!image.file) {
+            setSeverity('error');
+            setMessage('No file selected');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append('sliderImages', image.file);
+    
+        try {
+            const response = await postData(`/api/slider-images/create`, formData);
+    
+            // Log the response to verify its structure
+            console.log('API Response:', response);
+    
+            // Check for expected properties in the response
+            if (!response || !Array.isArray(response.sliderImages)) {
+                throw new Error('Unexpected response format');
+            }
+    
+            const newImage = response.sliderImages[0]; // Ensure this is the correct format
+            const updatedSliderImages = [...sliderImages];
+            updatedSliderImages[index] = newImage;
+            setSliderImages(updatedSliderImages);
+            setSeverity('success');
+            setMessage('Slider image successfully added');
+        } catch (err) {
+            console.error('Error details:', err.message); // Log the error message
+            setSeverity('error');
+            setMessage('Slider image successfully added');
+        }
+    };
+    
+    
+    
+    
 
     return (
         <Container style={{ marginLeft: '260px', padding: '20px' }}>
@@ -74,13 +130,15 @@ const SliderImages = () => {
 
             <Grid container spacing={3}>
                 {Array.isArray(sliderImages) && sliderImages.map((image, index) => (
-                    <Grid item xs={12} key={index}> {/* Full width for each image */}
-                        <Typography variant="subtitle1"><b>Kaydırıcı {Math.floor(index / 3) + 1} Resim {index % 3 + 1}:</b></Typography>
-                        <img
-                            src={image.imageUrl}  // Use image.url to display the image
-                            alt={`Slider ${Math.floor(index / 3) + 1} Image ${index % 3 + 1}`}
-                            style={{ width: '100%', height: '450px', objectFit: 'cover', marginBottom: '10px' }}  // Set fixed height and width
-                        />
+                    <Grid item xs={12} key={index}>
+                        <Typography variant="subtitle1"><b>Kaydırıcı Resmi: {index + 1}</b></Typography>
+                        {image.imageUrl && (
+                            <img
+                                src={image.imageUrl}
+                                alt={`Slider ${Math.floor(index / 3) + 1} Image ${index % 3 + 1}`}
+                                style={{ width: '100%', height: '450px', objectFit: 'cover', marginBottom: '10px' }}
+                            />
+                        )}
                         <input
                             type="file"
                             onChange={(e) => handleFileChange(e, index)}
@@ -89,13 +147,50 @@ const SliderImages = () => {
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => handleUpdateSliderImage(index)}
+                            onClick={image._id ? () => handleUpdateSliderImage(index) : () => handleSaveNewImage(index)}
+                            style={{ marginRight: '10px' }}
                         >
-                           Resmi Güncelle
+                            {image._id ? 'Resmi Güncelle' : 'Resmi Kaydet'}
+                        </Button>
+                        <Button
+                            variant="contained"
+                            color="error"
+                            onClick={() => handleDeleteClick(image._id)}
+                        >
+                            Silmek
                         </Button>
                     </Grid>
                 ))}
+                <Grid item xs={12}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleAddSliderImage}
+                    >
+                        Yeni Resim Ekle
+                    </Button>
+                </Grid>
             </Grid>
+
+            <Dialog
+                open={openDialog}
+                onClose={handleCancelDelete}
+            >
+                <DialogTitle>Slider Resmini Sil</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Bu slider resmini silmek istediğinizden emin misiniz?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleCancelDelete} color="primary">
+                        Hayır
+                    </Button>
+                    <Button onClick={handleConfirmDelete} color="error" autoFocus>
+                        Evet
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </Container>
     );
 };

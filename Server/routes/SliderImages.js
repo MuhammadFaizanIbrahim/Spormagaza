@@ -41,69 +41,68 @@ router.get('/', async (req, res) => {
 // @desc    Add new images to the slider
 // @access  Private
 router.post('/create', upload.array('sliderImages', 10), async (req, res) => {
-    try {
-        const files = req.files || [];
+  try {
+      const files = req.files || [];
 
-        if (files.length === 0) {
-            return res.status(400).send("No images provided!");
-        }
+      if (files.length === 0) {
+          return res.status(400).send("No images provided!");
+      }
 
-        const { default: pLimit } = await import('p-limit');
-        const limit = pLimit(2);
+      const { default: pLimit } = await import('p-limit');
+      const limit = pLimit(2);
 
-        const imagesToUpload = files.map((file) => {
-            return limit(async () => {
-                const result = await cloudinary.uploader.upload(file.path);
-                return {
-                    imageUrl: result.secure_url,
-                    filename: file.filename
-                };
-            });
-        });
+      const imagesToUpload = files.map((file) => {
+          return limit(async () => {
+              const result = await cloudinary.uploader.upload(file.path);
+              return {
+                  imageUrl: result.secure_url,
+                  filename: file.filename
+              };
+          });
+      });
 
-        const uploadedImages = await Promise.all(imagesToUpload);
+      const uploadedImages = await Promise.all(imagesToUpload);
 
-        // Save sliderImages information to your database
-        const newImages = await SliderImage.insertMany(uploadedImages);
+      // Save sliderImages information to your database
+      const newImages = await SliderImage.insertMany(uploadedImages);
 
-        res.status(201).json({ message: 'Slider images uploaded successfully', sliderImages: newImages });
-    } catch (error) {
-        console.error('Error uploading slider images:', error);
-        res.status(500).json({ message: 'Failed to upload slider images' });
-    }
+      // Respond with the correct structure
+      res.status(201).json({
+          message: 'Slider images uploaded successfully',
+          sliderImages: newImages // Ensure this matches what the frontend expects
+      });
+  } catch (error) {
+      console.error('Error uploading slider images:', error);
+      res.status(500).json({
+          message: 'Failed to upload slider images',
+          error: error.message // Include error details for debugging
+      });
+  }
 });
+
+
 
 // @route   DELETE /api/slider-images/:id
 // @desc    Delete an image from the slider
 // @access  Private
 router.delete('/:id', async (req, res) => {
     try {
-        const image = await SliderImage.findById(req.params.id);
+        const imageId = req.params.id;
+        const deletedImage = await SliderImage.findByIdAndDelete(imageId);
 
-        if (!image) {
-            return res.status(404).json({ message: 'Image not found' });
+        if (!deletedImage) {
+            return res.status(404).json({ message: 'Slider image not found' });
         }
 
-        // Delete the image from Cloudinary
-        const publicId = path.basename(image.imageUrl).split('.')[0];
-        await cloudinary.uploader.destroy(publicId);
+        // Optionally, delete the file from the file system if stored locally
+        // fs.unlinkSync(deletedImage.imagePath);
 
-        // Delete the file from the server
-        fs.unlink(path.join(__dirname, '..', image.imageUrl), async (err) => {
-            if (err) {
-                console.error('Error deleting image file:', err);
-                return res.status(500).json({ message: 'Failed to delete image file' });
-            }
-
-            // Remove the image record from the database
-            await image.remove();
-            res.json({ message: 'Image removed' });
-        });
-    } catch (err) {
-        res.status(500).json({ message: 'Server Error' });
+        res.status(200).json({ message: 'Slider image deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting slider image:', error);
+        res.status(500).json({ message: 'Failed to delete slider image' });
     }
 });
-
 
 // @route   POST /api/slider-images/update/:id
 // @desc    Update an existing image in the slider

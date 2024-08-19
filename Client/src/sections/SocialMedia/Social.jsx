@@ -5,10 +5,10 @@ import './Social.css';
 const Social = () => {
   return (
     <div className="fullSocial">
-      <div className="socialItem">
+      <a href="https://www.instagram.com/spormagaza.tr?igsh=MXQwbXVvYzYwYWNwYw==" target="_blank" rel="noopener noreferrer" className="socialItem">
         <FaInstagram className="socialIcon" />
         <span className="socialText">@spormagaza.tr</span>
-      </div>
+      </a>
     </div>
   );
 };
