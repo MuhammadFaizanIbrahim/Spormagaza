@@ -14,13 +14,12 @@ const SliderImages = () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/slider-images`);
                 console.log(response.data); // Check if _id is included
-                setSliderImages(response.data);
+                setSliderImages(response.data.slice(0, 3)); // Limit to 3 images
             } catch (err) {
                 setSeverity('error');
                 setMessage('Failed to fetch slider images');
             }
         };
-        
 
         fetchSliderImages();
     }, []);
@@ -41,22 +40,22 @@ const SliderImages = () => {
     const handleUpdateSliderImage = async (index) => {
         const image = sliderImages[index];
         console.log('Image Data:', image); // Check if _id is present
-    
+
         if (!image._id) {
             setSeverity('error');
             setMessage(`No ID found for slider image ${index + 1}`);
             return;
         }
-    
+
         if (!image.file) {
             setSeverity('error');
             setMessage(`No file selected for slider image ${index + 1}`);
             return;
         }
-    
+
         const formData = new FormData();
         formData.append('sliderImage', image.file);
-    
+
         try {
             await postData(`/api/slider-images/update/${image._id}`, formData);
             setSeverity('success');
@@ -67,7 +66,6 @@ const SliderImages = () => {
             setMessage(`Failed to update slider image ${index + 1}`);
         }
     };
-    
 
     return (
         <Container style={{ marginLeft: '260px', padding: '20px' }}>
@@ -76,7 +74,7 @@ const SliderImages = () => {
 
             <Grid container spacing={3}>
                 {Array.isArray(sliderImages) && sliderImages.map((image, index) => (
-                    <Grid item xs={12} sm={4} key={index}>
+                    <Grid item xs={12} key={index}> {/* Full width for each image */}
                         <Typography variant="subtitle1"><b>Kaydırıcı {Math.floor(index / 3) + 1} Resim {index % 3 + 1}:</b></Typography>
                         <img
                             src={image.imageUrl}  // Use image.url to display the image
