@@ -94,6 +94,10 @@
     gap: 3px;
     color: black;
 }
+.product-notice{
+    font-size: 23px;
+}
+
 
 .productButtons{
     display: flex;
@@ -458,6 +462,9 @@
     .productTitleAndPrice{
         width: 100%;
     }
+    .product-notice{
+        font-size: 18px;
+    }
     .product-title {
         font-size: 17px;
         margin-left: 2%;
@@ -630,6 +637,9 @@
     .product-title {
         font-size: 17px;
         margin-left: 2%;
+    }
+    .product-notice{
+        font-size: q7px;
     }
     .product-brand {
         margin-left: 2%;

@@ -13,7 +13,7 @@ import './CheckoutPage.css';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const CheckoutForm = ({ form, handleChange, setForm }) => {
+const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions  }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -21,8 +21,17 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
   }, [location]);
 
   const handleSelectChange = (selectedOption, name) => {
-    setForm({ ...form, [name]: selectedOption });
+    if (name === 'province') {
+      setForm({ ...form, province: selectedOption, city: '' });
+  
+      // Update city options based on selected province
+      const filteredCities = cities[selectedOption.value] || []; // Assuming cities is an object with province keys
+      setCityOptions(filteredCities.map(city => ({ value: city, label: city })));
+    } else {
+      setForm({ ...form, [name]: selectedOption });
+    }
   };
+  
 
   const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
 
@@ -77,93 +86,96 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
       }}
     />
       </label>
+      
       <br />
       <div className='cityProvince'>
       <label>Şehir: <br />
-        <Select
-          name="city"
-          value={form.city}
-          options={cities.map(city => ({ value: city, label: city }))}
-          onChange={(selectedOption) => handleSelectChange(selectedOption, 'city')}
-          styles={{
-            control: (provided) => ({
-              ...provided,
-              width: '310%',
-              marginLeft: '10px',
-              borderRadius: '0',
-              '@media (max-width: 768px)': {
-                width: '130%',          // Full width on mobile
-                marginLeft: '10px',        // Remove margin on mobile
-              },
-            }),
-            option: (provided, state) => ({
-              ...provided,
-              backgroundColor: state.isSelected ? '#007bff' : '#fff',  // Background color of the options
-              color: state.isSelected ? '#fff' : '#333',               // Text color of the options
-              padding: '10px',                                        // Padding inside the options
-              cursor: 'pointer',                                      // Pointer cursor on hover
-            }),
-            singleValue: (provided) => ({
-              ...provided,
-              color: '#333',            // Text color of the selected value
-            }),
-            menu: (provided) => ({
-              ...provided,
-              borderRadius: '0px',      // Rounded corners for the dropdown
-              zIndex: 100,   
-              width: '310%',
-              marginLeft: '10px',
-              '@media (max-width: 768px)': {
-                width: '130%',          // Full width on mobile
-                marginLeft: '10px',        // Remove margin on mobile
-              },     // Ensure dropdown is above other elements
-            }),
-          }}
-        />
-      </label>
+  <Select
+    name="province"
+    value={form.province}
+    options={provinces.map(province => ({ value: province, label: province }))}
+    onChange={(selectedOption) => handleSelectChange(selectedOption, 'province')}
+    styles={{
+      control: (provided) => ({
+        ...provided,
+        width: '310px',               // Set a fixed width for the control
+        marginLeft: '10px',
+        borderRadius: '0',
+        '@media (max-width: 768px)': {
+          width: '130px',            // Fixed width on mobile
+          marginLeft: '10px',         // Adjust margin on mobile
+        },
+      }),
+      option: (provided, state) => ({
+        ...provided,
+        backgroundColor: state.isSelected ? '#007bff' : '#fff',  // Background color of the options
+        color: state.isSelected ? '#fff' : '#333',               // Text color of the options
+        padding: '10px',                                        // Padding inside the options
+        cursor: 'pointer',                                      // Pointer cursor on hover
+      }),
+      singleValue: (provided) => ({
+        ...provided,
+        color: '#333',            // Text color of the selected value
+      }),
+      menu: (provided) => ({
+        ...provided,
+        borderRadius: '0px',
+        zIndex: 100,
+        width: '310px',           // Fixed width for the dropdown menu
+        marginLeft: '10px',
+        '@media (max-width: 768px)': {
+          width: '130px',         // Fixed width on mobile
+          marginLeft: '10px',     // Adjust margin on mobile
+        },
+      }),
+    }}
+  />
+</label>
+
       <br />
       <label>İlçe: <br />
-        <Select
-          name="province"
-          value={form.province}
-          options={provinces.map(province => ({ value: province, label: province }))}
-          onChange={(selectedOption) => handleSelectChange(selectedOption, 'province')}
-          styles={{
-            control: (provided) => ({
-              ...provided,
-              width: '285%',
-              marginLeft: '10px',
-              borderRadius: '0',
-              '@media (max-width: 768px)': {
-                width: '130%',          // Full width on mobile
-                marginLeft: '0',        // Remove margin on mobile
-              },
-            }),
-            option: (provided, state) => ({
-              ...provided,
-              backgroundColor: state.isSelected ? '#007bff' : '#fff',  // Background color of the options
-              color: state.isSelected ? '#fff' : '#333',               // Text color of the options
-              padding: '10px',                                        // Padding inside the options
-              cursor: 'pointer',                                      // Pointer cursor on hover
-            }),
-            singleValue: (provided) => ({
-              ...provided,
-              color: '#333',            // Text color of the selected value
-            }),
-            menu: (provided) => ({
-              ...provided,
-              borderRadius: '0px',      // Rounded corners for the dropdown
-              zIndex: 100,   
-              width: '285%',
-              marginLeft: '10px',
-              '@media (max-width: 768px)': {
-                width: '130%',          // Full width on mobile
-                marginLeft: '0',        // Remove margin on mobile
-              },        // Ensure dropdown is above other elements
-            }),
-          }}
-        />
-      </label>
+  <Select
+    name="city"
+    value={form.city}
+    options={cityOptions} // Use the dynamically filtered cities
+    onChange={(selectedOption) => handleSelectChange(selectedOption, 'city')}
+    styles={{
+      control: (provided) => ({
+        ...provided,
+        width: '285px',               // Set a fixed width for the control
+        marginLeft: '10px',
+        borderRadius: '0',
+        '@media (max-width: 768px)': {
+          width: '130px',            // Fixed width on mobile
+          marginLeft: '0',           // Remove margin on mobile
+        },
+      }),
+      option: (provided, state) => ({
+        ...provided,
+        backgroundColor: state.isSelected ? '#007bff' : '#fff',
+        color: state.isSelected ? '#fff' : '#333',
+        padding: '10px',
+        cursor: 'pointer',
+      }),
+      singleValue: (provided) => ({
+        ...provided,
+        color: '#333',
+      }),
+      menu: (provided) => ({
+        ...provided,
+        borderRadius: '0px',         // Remove rounded corners for the dropdown
+        zIndex: 100,
+        width: '285px',              // Fixed width for the dropdown menu
+        marginLeft: '10px',
+        '@media (max-width: 768px)': {
+          width: '130px',            // Fixed width on mobile
+          marginLeft: '0',           // Remove margin on mobile
+        },
+      }),
+    }}
+  />
+</label>
+
       </div>
       <br />
       <label>Posta Kodu: <br />
@@ -189,6 +201,8 @@ const CheckoutPage = () => {
     paymentMethod: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [cityOptions, setCityOptions] = useState([]); // New state to store cities based on selected province
+
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -282,7 +296,7 @@ const CheckoutPage = () => {
     <div className="checkout-container">
       <div className="checkout-form">
         <h2> Adres Bilgileri</h2>
-        <CheckoutForm form={form} handleChange={handleChange} setForm={setForm}/>
+        <CheckoutForm form={form} handleChange={handleChange} setForm={setForm}  cityOptions={cityOptions} setCityOptions={setCityOptions}/>
       </div>
       <div className="order-details">
         <h2>Sipariş Detayları</h2>

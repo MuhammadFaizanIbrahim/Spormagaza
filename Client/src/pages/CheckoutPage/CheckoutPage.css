@@ -48,7 +48,7 @@
   .cityProvince{
     display: flex;
     width: 100%;
-    gap: 8.2rem;
+    gap: 2.2rem;
   }
   
   .order-details button {

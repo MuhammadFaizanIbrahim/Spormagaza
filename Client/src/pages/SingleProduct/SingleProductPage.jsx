@@ -158,7 +158,7 @@ const SingleProductPage = () => {
               <h1 className="product-brand">{product.brand}</h1>
               <h1 className="product-title">{product.name}</h1>
               <p className="product-stock">{isOutOfStock ? 'Stoklar Tükendi' : 'Stokta var'}</p>
-              {/* <h1 className="product-notice">SİPARİŞ VERMEDEN ÖNCE MUTLAKA OKUYUNUZ SİPARİŞ VERİLEN ÜRÜNLER 29.08.2024 TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.</h1> */}
+              <h1 className="product-notice"><span style={{ color: '#C0392B' }}>SİPARİŞ VERMEDEN ÖNCE MUTLAKA OKUYUNUZ; </span> SİPARİŞ VERİLEN ÜRÜNLER <span style={{ color: '#C0392B' }}>29.08.2024</span> TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.</h1>              
               <img src={sizeTable} className='sizeTable' alt='size' />
               <p className="product-price">₺{product.price},00</p>
               <div className="share-now">
