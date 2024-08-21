@@ -3,40 +3,174 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../components/CartContext';
 import { editData, postData } from '../../utils/api';
 import { loadStripe } from '@stripe/stripe-js';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import Select from 'react-select';
+import cities from './cities'; // An array of Turkish cities
+import provinces from './provinces'; // An array of Turkish provinces
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import './CheckoutPage.css';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
-const CheckoutForm = ({ form, handleChange }) => {
+const CheckoutForm = ({ form, handleChange, setForm }) => {
   const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const handleSelectChange = (selectedOption, name) => {
+    setForm({ ...form, [name]: selectedOption });
+  };
+
+  const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+
   return (
     <form>
       <label>Ad Soyad: <br />
         <input type="text" name="fullName" value={form.fullName} onChange={handleChange} required />
       </label>
+      <br />
       <label>E-posta: <br />
         <input type="email" name="email" value={form.email} onChange={handleChange} required />
       </label>
+      <br />
       <label>Telefon numarası: <br />
-        <input type="text" name="phone" value={form.phone} onChange={handleChange} required />
+      <PhoneInput
+      country={'tr'}
+      value={form.phone}
+      onChange={(phone) => handleSelectChange(phone, 'phone')}
+      required
+      inputStyle={{
+        width: isMobile ? '86%' : '90%',          // Full width on mobile
+        marginLeft: isMobile ? '35px' : '40px',        // Adjust margin on mobile
+        padding: '10px',                            // Padding inside the input
+        fontSize: isMobile ? '14px' : '16px',       // Adjust font size on mobile
+        borderRadius: '0px',                        // Rounded corners
+        border: '1px solid #ccc'                    // Border styling
+      }}
+      containerStyle={{
+        marginLeft: isMobile ? '10px' : '10px',        // Adjust margin on mobile
+        width: '100%'                               // Full width of the container
+      }}
+    />
       </label>
+      <br />
       <label>Adres: <br />
         <input type="text" name="address" value={form.address} onChange={handleChange} required />
       </label>
-      <label>Şehir: <br />
-        <input type="text" name="city" value={form.city} onChange={handleChange} required />
+      <br />
+      <label>Ülke: <br />
+      <Select
+      value={form.country}
+      options={[{ value: 'Turkey', label: 'Turkey', flag: '🇹🇷' }]}
+      onChange={(selectedOption) => handleSelectChange(selectedOption, 'country')}
+      isDisabled={true}
+      styles={{
+        control: (provided) => ({
+          ...provided,
+          width: '95%',
+          marginLeft: '10px',
+          borderRadius: '0',
+        })
+      }}
+    />
       </label>
+      <br />
+      <div className='cityProvince'>
+      <label>Şehir: <br />
+        <Select
+          name="city"
+          value={form.city}
+          options={cities.map(city => ({ value: city, label: city }))}
+          onChange={(selectedOption) => handleSelectChange(selectedOption, 'city')}
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              width: '310%',
+              marginLeft: '10px',
+              borderRadius: '0',
+              '@media (max-width: 768px)': {
+                width: '150%',          // Full width on mobile
+                marginLeft: '10px',        // Remove margin on mobile
+              },
+            }),
+            option: (provided, state) => ({
+              ...provided,
+              backgroundColor: state.isSelected ? '#007bff' : '#fff',  // Background color of the options
+              color: state.isSelected ? '#fff' : '#333',               // Text color of the options
+              padding: '10px',                                        // Padding inside the options
+              cursor: 'pointer',                                      // Pointer cursor on hover
+            }),
+            singleValue: (provided) => ({
+              ...provided,
+              color: '#333',            // Text color of the selected value
+            }),
+            menu: (provided) => ({
+              ...provided,
+              borderRadius: '0px',      // Rounded corners for the dropdown
+              zIndex: 100,   
+              width: '310%',
+              marginLeft: '10px',
+              '@media (max-width: 768px)': {
+                width: '150%',          // Full width on mobile
+                marginLeft: '10px',        // Remove margin on mobile
+              },     // Ensure dropdown is above other elements
+            }),
+          }}
+        />
+      </label>
+      <br />
+      <label>İlçe: <br />
+        <Select
+          name="province"
+          value={form.province}
+          options={provinces.map(province => ({ value: province, label: province }))}
+          onChange={(selectedOption) => handleSelectChange(selectedOption, 'province')}
+          styles={{
+            control: (provided) => ({
+              ...provided,
+              width: '285%',
+              marginLeft: '10px',
+              borderRadius: '0',
+              '@media (max-width: 768px)': {
+                width: '150%',          // Full width on mobile
+                marginLeft: '0',        // Remove margin on mobile
+              },
+            }),
+            option: (provided, state) => ({
+              ...provided,
+              backgroundColor: state.isSelected ? '#007bff' : '#fff',  // Background color of the options
+              color: state.isSelected ? '#fff' : '#333',               // Text color of the options
+              padding: '10px',                                        // Padding inside the options
+              cursor: 'pointer',                                      // Pointer cursor on hover
+            }),
+            singleValue: (provided) => ({
+              ...provided,
+              color: '#333',            // Text color of the selected value
+            }),
+            menu: (provided) => ({
+              ...provided,
+              borderRadius: '0px',      // Rounded corners for the dropdown
+              zIndex: 100,   
+              width: '285%',
+              marginLeft: '10px',
+              '@media (max-width: 768px)': {
+                width: '150%',          // Full width on mobile
+                marginLeft: '0',        // Remove margin on mobile
+              },        // Ensure dropdown is above other elements
+            }),
+          }}
+        />
+      </label>
+      </div>
+      <br />
       <label>Posta Kodu: <br />
         <input type="text" name="postalCode" value={form.postalCode} onChange={handleChange} required />
       </label>
-      <label>Ülke: <br />
-        <input type="text" name="country" value={form.country} onChange={handleChange} required />
+      <label>T.C. Kimlik No: <br />
+        <input type="text" name="postalCode" value={form.postalCode} onChange={handleChange} required />
       </label>
     </form>
   );
@@ -51,7 +185,7 @@ const CheckoutPage = () => {
     address: '',
     city: '',
     postalCode: '',
-    country: '',
+    country: { value: 'Turkey', label: 'Turkey', flag: '🇹🇷' },
     paymentMethod: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -147,15 +281,19 @@ const CheckoutPage = () => {
   return (
     <div className="checkout-container">
       <div className="checkout-form">
-        <h2>Fatura Detayları</h2>
-        <CheckoutForm form={form} handleChange={handleChange} />
+        <h2> Adres Bilgileri</h2>
+        <CheckoutForm form={form} handleChange={handleChange} setForm={setForm}/>
       </div>
       <div className="order-details">
         <h2>Sipariş Detayları</h2>
         {cart.map((item, index) => (
           <div key={index} className="order-item">
-            <span>{item.name} : {item.selectedSize}</span>
-            <span>{item.quantity} x ${item.price}</span>
+            <img src={item.images[0]} alt={item.name}  className='orderImage'/>
+            <div className='orderNSQ'>
+            <span>{item.name}</span>
+            <span>Boyut : {item.selectedSize}</span>
+            <span>{item.quantity} ADET ₺{item.price}</span>
+            </div>
           </div>
         ))}
         <hr className="divider" />

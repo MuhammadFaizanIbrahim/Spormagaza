@@ -1,31 +1,39 @@
 .checkout-container {
     display: flex;
     justify-content: space-between;
-    padding: 120px;
+    padding: 40px 120px 120px 120px;
     width: 100vw;
+    background-color: #EFEFEF;
+  }
+
+  .checkout-form {
+    width: 65%;
     background-color: white;
+    padding: 20px;
+    /* border-radius: 5px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* border: 1px solid black; */
   }
   
-  .checkout-form,
   .order-details {
-    width: 45%;
-    background-color: whitesmoke;
+    width: 30%;
+    background-color: white;
     padding: 20px;
-    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid black;
   }
   
   .checkout-form h2,
   .order-details h2 {
-    margin-bottom: 30px;
-    color: black;
+    margin-bottom: 10px;
+    color: gray;
+    text-align: left;
   }
   
   .checkout-form label {
     display: block;
     margin-bottom: 10px;
-    color: black;
+    color: gray;
+    font-size: 13px;
   }
   
   .checkout-form input {
@@ -34,8 +42,13 @@
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid rgba(120, 120, 120, 0.414);
+  }
+
+  .cityProvince{
+    display: flex;
+    width: 100%;
+    gap: 8.2rem;
   }
   
   .order-details button {
@@ -46,7 +59,6 @@
     background-color: black;
     color: white;
     border: none;
-    border-radius: 30px;
     cursor: pointer;
     margin-left: 30%;
     font-size: 15px;
@@ -60,11 +72,24 @@
   
   .order-details .order-item {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 10px;
     color: black;
+    font-size: 13px;
+    gap: 10px;
+  }
+
+  .orderImage{
+    height: 80px;
+    width: 60px;
   }
   
+  .orderNSQ{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .order-summary div {
     display: flex;
     justify-content: space-between;
@@ -113,14 +138,15 @@
 @media screen and (min-width: 481px) and (max-width: 768px) {
 
   .checkout-container {
-    padding-top: 40px;
-    width: 110vw;
+    flex-direction: column;
+    padding: 40px 20px;
+    width: 100%;
   }
   
   .checkout-form{
-    width: 110vw;
+    width: 100%;
     padding: 20px;
-    margin-left: -6rem;
+    /* margin-left: -7rem; */
     /* margin-right: 2rem; */
   }
 
@@ -129,9 +155,10 @@
   }
   
   .order-details {
-    width: 115vw;
+    width: 95vw;
+    margin-top: 2rem;
     padding: 20px;
-    margin-left: 2rem;
+    /* margin-left: -7rem; */
   }
   .order-item{
     font-size: 14px;
@@ -162,6 +189,12 @@
     margin-left: 1px;
     margin-bottom: 20px;
   }
+
+  .cityProvince{
+    display: flex;
+    width: 100%;
+    gap: 2.6rem;
+  }
   
   .order-details button {
     width: 50%;
@@ -173,6 +206,8 @@
 
 @media (max-width: 480px) {
   .checkout-container {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     width: 100%;
   }
@@ -185,12 +220,19 @@
   .order-details {
     padding: 10px;
     width: 100%;
-    margin-left: 1rem;
+    margin-top: 2rem;
+    /* margin-left: 1rem; */
   }
 
   .checkout-form label {
     font-size: 12px;
    }
+
+   .cityProvince{
+    display: flex;
+    width: 100%;
+    gap: 2.6rem;
+  }
 
    .order-item{
     font-size: 14px;

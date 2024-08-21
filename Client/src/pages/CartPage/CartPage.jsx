@@ -43,7 +43,7 @@ const CartPage = () => {
             <tr>
               <th>Sr. No.</th>
               <th>Ürün resmi</th>
-              <th>ürün başlığı</th>
+              <th>Ürün başlığı</th>
               <th>Boyut</th>
               <th>Miktar</th>
               <th>Toplam fiyat</th>
@@ -72,7 +72,7 @@ const CartPage = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="4" style={{ textAlign: 'right' }}>Toplam:</td>
+              <td colSpan="5" style={{ textAlign: 'right' }}>Toplam:</td>
               <td>₺{totalSum.toFixed(2)}</td>
               <td></td>
             </tr>

@@ -39,7 +39,10 @@
     margin-right: 5px;
     color: black; /* Instagram's brand color */
   }
-  
+  .socialItem {
+    padding: 20px 15px; /* Adjust padding for smaller screens */
+    z-index: 999;
+}
   .socialText {
     font-weight: 500;
     font-size: 15px;
