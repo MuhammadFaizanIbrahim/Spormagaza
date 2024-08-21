@@ -43,7 +43,7 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
       onChange={(phone) => handleSelectChange(phone, 'phone')}
       required
       inputStyle={{
-        width: isMobile ? '86%' : '90%',          // Full width on mobile
+        width: isMobile ? '85%' : '90%',          // Full width on mobile
         marginLeft: isMobile ? '35px' : '40px',        // Adjust margin on mobile
         padding: '10px',                            // Padding inside the input
         fontSize: isMobile ? '14px' : '16px',       // Adjust font size on mobile
@@ -92,7 +92,7 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
               marginLeft: '10px',
               borderRadius: '0',
               '@media (max-width: 768px)': {
-                width: '150%',          // Full width on mobile
+                width: '130%',          // Full width on mobile
                 marginLeft: '10px',        // Remove margin on mobile
               },
             }),
@@ -114,7 +114,7 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
               width: '310%',
               marginLeft: '10px',
               '@media (max-width: 768px)': {
-                width: '150%',          // Full width on mobile
+                width: '130%',          // Full width on mobile
                 marginLeft: '10px',        // Remove margin on mobile
               },     // Ensure dropdown is above other elements
             }),
@@ -135,7 +135,7 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
               marginLeft: '10px',
               borderRadius: '0',
               '@media (max-width: 768px)': {
-                width: '150%',          // Full width on mobile
+                width: '130%',          // Full width on mobile
                 marginLeft: '0',        // Remove margin on mobile
               },
             }),
@@ -157,7 +157,7 @@ const CheckoutForm = ({ form, handleChange, setForm }) => {
               width: '285%',
               marginLeft: '10px',
               '@media (max-width: 768px)': {
-                width: '150%',          // Full width on mobile
+                width: '130%',          // Full width on mobile
                 marginLeft: '0',        // Remove margin on mobile
               },        // Ensure dropdown is above other elements
             }),
