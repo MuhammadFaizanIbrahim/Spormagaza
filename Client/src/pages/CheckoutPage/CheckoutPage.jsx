@@ -93,6 +93,7 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
   <Select
     name="province"
     value={form.province}
+    placeholder='Şehir seçiniz'
     options={provinces.map(province => ({ value: province, label: province }))}
     onChange={(selectedOption) => handleSelectChange(selectedOption, 'province')}
     styles={{
@@ -137,6 +138,7 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
   <Select
     name="city"
     value={form.city}
+    placeholder='İlçe seçiniz'
     options={cityOptions} // Use the dynamically filtered cities
     onChange={(selectedOption) => handleSelectChange(selectedOption, 'city')}
     styles={{
@@ -182,7 +184,7 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
         <input type="text" name="postalCode" value={form.postalCode} onChange={handleChange} required />
       </label>
       <label>T.C. Kimlik No: <br />
-        <input type="text" name="postalCode" value={form.postalCode} onChange={handleChange} required />
+        <input type="text" name="tckCode" value={form.tckCode} onChange={handleChange} required />
       </label>
     </form>
   );
@@ -196,9 +198,11 @@ const CheckoutPage = () => {
     email: '',
     address: '',
     city: '',
+    district:'',
     postalCode: '',
     country: { value: 'Turkey', label: 'Turkey', flag: '🇹🇷' },
-    paymentMethod: ''
+    paymentMethod: '',
+    tckCode: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [cityOptions, setCityOptions] = useState([]); // New state to store cities based on selected province
