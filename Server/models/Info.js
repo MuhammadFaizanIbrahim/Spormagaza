@@ -18,6 +18,9 @@ const infoSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  delivery: {
+    type: Number,
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Info', infoSchema);

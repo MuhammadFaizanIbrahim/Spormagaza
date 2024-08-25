@@ -193,7 +193,7 @@
   .cityProvince{
     display: flex;
     width: 100%;
-    gap: 2.6rem;
+    gap: 2rem;
   }
   
   .order-details button {
@@ -232,7 +232,7 @@
    .cityProvince{
     display: flex;
     width: 100%;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
    .order-item{

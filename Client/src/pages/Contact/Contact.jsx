@@ -57,7 +57,7 @@ const Contact = () => {
       </div>
       <div className="line">
         <span className='main'> E-Posta: </span> 
-        <span className='val'> {info?.email || 'info@spormagazatr.com'} </span>
+        <span className='val'> {info?.email || 'contact@spormagazatr.com'} </span>
       </div>
       <div className="line">
         <span className='main'>Adres: </span> 

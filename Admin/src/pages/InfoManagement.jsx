@@ -9,7 +9,8 @@ const InfoPage = () => {
         phoneNumber1: '',
         phoneNumber2: '',
         address: '',
-        email: ''
+        email: '',
+        delivery: ''
     });
     const [message, setMessage] = useState('');
     const [severity, setSeverity] = useState('success');
@@ -110,6 +111,16 @@ const InfoPage = () => {
                         onChange={handleInputChange}
                         fullWidth
                         multiline
+                        rows={4}
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        label="Teslimat Ücretleri Ekle"
+                        name="delivery"
+                        value={info.delivery}
+                        onChange={handleInputChange}
+                        fullWidth
                         rows={4}
                     />
                 </Grid>

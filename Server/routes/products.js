@@ -119,7 +119,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/create', upload.array('images', 10), async (req, res) => {
   try {
-      // Check if files are provided
+      console.log('Request Body:', req.body);
+
       const files = req.files || [];
 
       // Validate images array
@@ -161,6 +162,7 @@ router.post('/create', upload.array('images', 10), async (req, res) => {
           rating: req.body.rating,
           numReviews: req.body.numReviews,
           isFeatured: req.body.isFeatured,
+          showProductNotice: req.body.showProductNotice,
       });
 
       product = await product.save();
@@ -235,6 +237,7 @@ router.put('/:id', upload.array('images', 10), async (req, res) => {
                 rating: req.body.rating,
                 numReviews: req.body.numReviews,
                 isFeatured: req.body.isFeatured,
+                showProductNotice: req.body.showProductNotice,
             }
         }, { new: true });
   

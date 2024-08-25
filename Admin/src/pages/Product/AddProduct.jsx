@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, MenuItem, FormControl, InputLabel, Select, Alert } from '@mui/material';
+import { Container, TextField, Button, Typography, MenuItem, FormControl, InputLabel, Select, Alert, FormControlLabel, Checkbox } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { postData, fetchDataFromApi } from '../../utils/api';
@@ -14,7 +14,8 @@ const AddProduct = () => {
         price: '',
         category: '',
         countInStock: '',
-        isFeatured: false
+        isFeatured: false,
+        showProductNotice: true
     });
     const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('');
@@ -86,6 +87,7 @@ const AddProduct = () => {
         formData.append('countInStockForLarge', product.countInStockForLarge);
         formData.append('countInStockForExtraLarge', product.countInStockForExtraLarge);
         formData.append('isFeatured', product.isFeatured);
+        formData.append('showProductNotice', product.showProductNotice); 
 
         try {
             await postData('/api/products/create', formData);
@@ -255,6 +257,17 @@ const AddProduct = () => {
                         <MenuItem value="true">Evet</MenuItem>
                     </Select>
                 </FormControl>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={product.showProductNotice}
+                            onChange={handleChange}
+                            name="showProductNotice"
+                        />
+                    }
+                    label="Tarih Bildirim Satırını Göster"
+                    style={{ marginBottom: '20px' }}
+                />
                 <Button variant="contained" color="primary" type="submit">Eklemek</Button>
             </form>
         </Container>

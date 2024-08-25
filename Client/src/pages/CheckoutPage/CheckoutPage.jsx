@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../components/CartContext';
-import { editData, postData } from '../../utils/api';
+import { editData, fetchDataFromApi, postData } from '../../utils/api';
 import { loadStripe } from '@stripe/stripe-js';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
@@ -9,6 +9,7 @@ import Select from 'react-select';
 import cities from './cities'; // An array of Turkish cities
 import provinces from './provinces'; // An array of Turkish provinces
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import axios from 'axios'; // Ensure axios is imported
 import './CheckoutPage.css';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -103,7 +104,7 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
         marginLeft: '10px',
         borderRadius: '0',
         '@media (max-width: 768px)': {
-          width: '130px',            // Fixed width on mobile
+          width: '160px',            // Fixed width on mobile
           marginLeft: '10px',         // Adjust margin on mobile
         },
       }),
@@ -122,10 +123,10 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
         ...provided,
         borderRadius: '0px',
         zIndex: 100,
-        width: '310px',           // Fixed width for the dropdown menu
+        width: '380px',           // Fixed width for the dropdown menu
         marginLeft: '10px',
         '@media (max-width: 768px)': {
-          width: '130px',         // Fixed width on mobile
+          width: '160px',         // Fixed width on mobile
           marginLeft: '10px',     // Adjust margin on mobile
         },
       }),
@@ -191,6 +192,23 @@ const CheckoutForm = ({ form, handleChange, setForm, cityOptions, setCityOptions
 };
 
 const CheckoutPage = () => {
+
+  useEffect(() => {
+    // Fetch information from the API
+    const fetchInfo = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/info`);
+        if (response.data) {
+          setDeliveryCharges(response.data);
+        }
+      } catch (err) {
+        console.error('Failed to fetch information', err);
+      }
+    };
+
+    fetchInfo();
+  }, []);
+
   const { cart, clearCart } = useCart();
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -206,6 +224,7 @@ const CheckoutPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [cityOptions, setCityOptions] = useState([]); // New state to store cities based on selected province
+  const [deliveryCharges, setDeliveryCharges] = useState({});
 
 
   const handleChange = (e) => {
@@ -288,12 +307,14 @@ const CheckoutPage = () => {
 
   const calculateTotal = () => {
     const productCost = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const deliveryCost = cart.length > 0 ? (deliveryCharges.delivery || 0) : 0; // Add delivery charges only if the cart is not empty
     return {
       productCost,
-      totalCost: productCost,
+      totalCost: productCost + deliveryCost,
     };
   };
-
+  
+  
   const { productCost, totalCost } = calculateTotal();
 
   return (
@@ -320,6 +341,10 @@ const CheckoutPage = () => {
             <span>Ürün Maliyeti:</span>
             <span>₺{productCost.toFixed(2)}</span>
           </div>
+          <div>
+          <span>Teslimat Ücretleri:</span>
+          {deliveryCharges.delivery ? <span>₺{deliveryCharges.delivery}</span> : <span>Loading...</span>}
+         </div>
           <hr className="divider" />
           <div>
             <span>Toplam Fatura:</span>

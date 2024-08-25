@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, TextField, Button, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Container, TextField, Button, Typography, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Checkbox } from '@mui/material';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { fetchDataFromApi, editData } from '../../utils/api';
@@ -18,7 +18,8 @@ const UpdateProduct = () => {
         countInStock: '',
         rating: '',
         numReviews: '',
-        isFeatured: false
+        isFeatured: false,
+        showProductNotice: true 
     });
     const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('');
@@ -107,6 +108,7 @@ const UpdateProduct = () => {
         formData.append('rating', product.rating);
         formData.append('numReviews', product.numReviews);
         formData.append('isFeatured', product.isFeatured);
+        formData.append('showProductNotice', product.showProductNotice);
 
         try {
             await editData(`/api/products/${id}`, formData);
@@ -263,6 +265,17 @@ const UpdateProduct = () => {
                         <MenuItem value="true">Evet</MenuItem>
                     </Select>
                 </FormControl>
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={product.showProductNotice}
+                            onChange={handleChange}
+                            name="showProductNotice"
+                        />
+                    }
+                    label="Tarih Bildirim Satırını Göster"
+                    style={{ marginBottom: '20px' }}
+                />
                 <Button variant="contained" color="primary" type="submit">
                 Güncelleme
                 </Button>

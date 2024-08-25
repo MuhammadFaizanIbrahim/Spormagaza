@@ -5,7 +5,7 @@ const Info = require('../models/Info'); // Adjust the path as necessary
 // Route to add new information
 router.post('/add', async (req, res) => {
   try {
-    const { ibanNumber, phoneNumber1, phoneNumber2, address, email } = req.body;
+    const { ibanNumber, phoneNumber1, phoneNumber2, address, email, delivery } = req.body;
 
     // Check if an entry with the same IBAN or email already exists
     const existingInfo = await Info.findOne({ $or: [{ ibanNumber }, { email }] });
@@ -13,7 +13,7 @@ router.post('/add', async (req, res) => {
       return res.status(400).json({ message: 'IBAN number or email already exists' });
     }
 
-    const newInfo = new Info({ ibanNumber, phoneNumber1, phoneNumber2, address, email });
+    const newInfo = new Info({ ibanNumber, phoneNumber1, phoneNumber2, address, email, delivery });
     await newInfo.save();
     res.status(201).json(newInfo);
   } catch (error) {
@@ -25,11 +25,11 @@ router.post('/add', async (req, res) => {
 router.put('/update/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const { ibanNumber, phoneNumber1, phoneNumber2, address, email } = req.body;
+    const { ibanNumber, phoneNumber1, phoneNumber2, address, email, delivery } = req.body;
 
     const updatedInfo = await Info.findByIdAndUpdate(
       id,
-      { ibanNumber, phoneNumber1, phoneNumber2, address, email },
+      { ibanNumber, phoneNumber1, phoneNumber2, address, email, delivery },
       { new: true, runValidators: true }
     );
 

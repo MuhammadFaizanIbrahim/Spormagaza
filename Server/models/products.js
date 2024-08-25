@@ -56,10 +56,14 @@ const productSchema = mongoose.Schema ({
         type: Boolean,
         default: false,
         },
+    showProductNotice: {
+        type: Boolean,
+        default: true, 
+        },
     dateCreated: {
         type: Date,
         default: Date.now,
-        },
+        }
 });
        
 exports.Product = mongoose.model('Product', productSchema);
