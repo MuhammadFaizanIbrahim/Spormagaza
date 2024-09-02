@@ -19,7 +19,8 @@ const UpdateProduct = () => {
         rating: '',
         numReviews: '',
         isFeatured: false,
-        showProductNotice: true 
+        showProductNotice: true,
+        notice: ''
     });
     const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('');
@@ -90,6 +91,13 @@ const UpdateProduct = () => {
         }));
     };
 
+    const handleNoticeChange = (value) => {
+        setProduct(prevState => ({
+            ...prevState,
+            notice: value
+        }));
+    };
+
     const handleUpdateProduct = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -109,6 +117,7 @@ const UpdateProduct = () => {
         formData.append('numReviews', product.numReviews);
         formData.append('isFeatured', product.isFeatured);
         formData.append('showProductNotice', product.showProductNotice);
+        formData.append('notice', product.notice);
 
         try {
             await editData(`/api/products/${id}`, formData);
@@ -275,6 +284,28 @@ const UpdateProduct = () => {
                     }
                     label="Tarih Bildirim Satırını Göster"
                     style={{ marginBottom: '20px' }}
+                />
+                <Typography variant="h6">Fark etme</Typography>
+                <ReactQuill
+                    value={product.notice}
+                    onChange={handleNoticeChange}
+                    modules={{
+                        toolbar: [
+                            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                            ['link', 'image', 'video'],
+                            ['clean'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'align': [] }]
+                        ]
+                    }}
+                    formats={[
+                        'header', 'font', 'list', 'bullet',
+                        'bold', 'italic', 'underline', 'strike', 'blockquote',
+                        'link', 'image', 'video', 'color', 'background', 'align'
+                    ]}
+                    style={{ height: '200px' }}
                 />
                 <Button variant="contained" color="primary" type="submit">
                 Güncelleme

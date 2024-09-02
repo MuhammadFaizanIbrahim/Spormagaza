@@ -15,7 +15,8 @@ const AddProduct = () => {
         category: '',
         countInStock: '',
         isFeatured: false,
-        showProductNotice: true
+        showProductNotice: true,
+        notice: ''
     });
     const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('');
@@ -69,6 +70,12 @@ const AddProduct = () => {
             description: value
         }));
     };
+    const handleNoticeChange = (value) => {
+        setProduct(prevState => ({
+            ...prevState,
+            notice: value
+        }));
+    };
 
     const handleAddProduct = async (e) => {
         e.preventDefault();
@@ -88,6 +95,7 @@ const AddProduct = () => {
         formData.append('countInStockForExtraLarge', product.countInStockForExtraLarge);
         formData.append('isFeatured', product.isFeatured);
         formData.append('showProductNotice', product.showProductNotice); 
+        formData.append('notice', product.notice); 
 
         try {
             await postData('/api/products/create', formData);
@@ -267,6 +275,28 @@ const AddProduct = () => {
                     }
                     label="Tarih Bildirim Satırını Göster"
                     style={{ marginBottom: '20px' }}
+                />
+                <Typography variant="h6">Fark etme</Typography>
+                <ReactQuill
+                    value={product.notice}
+                    onChange={handleNoticeChange}
+                    modules={{
+                        toolbar: [
+                            [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+                            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                            ['link', 'image', 'video'],
+                            ['clean'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'align': [] }]
+                        ]
+                    }}
+                    formats={[
+                        'header', 'font', 'list', 'bullet',
+                        'bold', 'italic', 'underline', 'strike', 'blockquote',
+                        'link', 'image', 'video', 'color', 'background', 'align'
+                    ]}
+                    style={{ height: '200px' }}
                 />
                 <Button variant="contained" color="primary" type="submit">Eklemek</Button>
             </form>

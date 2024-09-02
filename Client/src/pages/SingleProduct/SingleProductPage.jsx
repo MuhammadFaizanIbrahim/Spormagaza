@@ -177,9 +177,9 @@ const SingleProductPage = () => {
               <p className="product-stock">{isOutOfStock ? 'Stoklar Tükendi' : 'Stokta var'}</p>
               {product.showProductNotice && (
                 <h1 className="product-notice">
-                  <span style={{ color: '#C0392B' }}>SİPARİŞ VERMEDEN ÖNCE MUTLAKA OKUYUNUZ; </span>
-                  SİPARİŞ VERİLEN ÜRÜNLER <span style={{ color: '#C0392B' }}>{formattedDate}</span> TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.
+                   <span dangerouslySetInnerHTML={{ __html: product.notice }} />
                 </h1>
+                
               )}
               <img src={sizeTable} className='sizeTable' alt='size' />
               <p className="product-price">₺{product.price},00</p>

@@ -163,6 +163,7 @@ router.post('/create', upload.array('images', 10), async (req, res) => {
           numReviews: req.body.numReviews,
           isFeatured: req.body.isFeatured,
           showProductNotice: req.body.showProductNotice,
+          notice: req.body.notice,
       });
 
       product = await product.save();
@@ -238,6 +239,7 @@ router.put('/:id', upload.array('images', 10), async (req, res) => {
                 numReviews: req.body.numReviews,
                 isFeatured: req.body.isFeatured,
                 showProductNotice: req.body.showProductNotice,
+                notice: req.body.notice,
             }
         }, { new: true });
   

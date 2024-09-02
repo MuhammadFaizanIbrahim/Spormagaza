@@ -60,6 +60,9 @@ const productSchema = mongoose.Schema ({
         type: Boolean,
         default: true, 
         },
+    notice: {
+            type: String,
+        },
     dateCreated: {
         type: Date,
         default: Date.now,
