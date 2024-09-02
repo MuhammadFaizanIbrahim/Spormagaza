@@ -84,10 +84,12 @@ const OrderDetails = () => {
                         <Typography variant="h4" sx={{ marginTop: '20px' }}>Kullanıcı Detayları:</Typography>
                         <Typography variant="h6"><b>İsim: </b>{order.shippingAddress.fullName}</Typography>
                         <Typography variant="h6"><b>E-Posta: </b>{order.shippingAddress.email}</Typography>
-                        <Typography variant="h6"><b>Telefon Numarası:</b> {order.shippingAddress.phone}</Typography>
+                        <Typography variant="h6"><b>Telefon Numarası:</b> +{order.shippingAddress.phone}</Typography>
+                        <Typography variant="h6"><b>T.C. Kimlik No:</b> {order.shippingAddress.tckCode}</Typography>
                         <Typography variant="h4" sx={{ marginTop: '20px' }}>Nakliye Ayrıntıları:</Typography>
                         <Typography variant="h6"><b>Adres: </b> {order.shippingAddress.address}</Typography>
-                        <Typography variant="h6"><b>Şehir: </b>{order.shippingAddress.city}</Typography>
+                        <Typography variant="h6"><b>Şehir: </b>{order.shippingAddress.province}</Typography>
+                        <Typography variant="h6"><b>İlçe: </b>{order.shippingAddress.city}</Typography>
                         <Typography variant="h6"><b>Posta Kodu: </b>{order.shippingAddress.postalCode}</Typography>
                         <Typography variant="h6"><b>Ülke: </b>{order.shippingAddress.country}</Typography>
                     </Paper>

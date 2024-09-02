@@ -83,6 +83,7 @@ router.post('/create', async (req, res) => {
             totalPrice,
             user,
             paymentMethodDetails,
+            tckCode,
         } = req.body;
 
         // Await the result of generateOrderNumber

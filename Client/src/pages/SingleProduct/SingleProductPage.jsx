@@ -137,6 +137,23 @@ const SingleProductPage = () => {
     return <div>Loading...</div>;
   }
 
+  const formatDate = (date) => {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+  };
+
+  // Get today's date
+  const today = new Date();
+
+  // Calculate the date 3 days from now
+  const futureDate = new Date(today);
+  futureDate.setDate(today.getDate() + 3);
+
+  // Format the future date
+  const formattedDate = formatDate(futureDate);
+
   return (
     <div className="product-page">
       <div className="product-container2" data-aos='fade-up'>
@@ -161,7 +178,7 @@ const SingleProductPage = () => {
               {product.showProductNotice && (
                 <h1 className="product-notice">
                   <span style={{ color: '#C0392B' }}>SİPARİŞ VERMEDEN ÖNCE MUTLAKA OKUYUNUZ; </span>
-                  SİPARİŞ VERİLEN ÜRÜNLER <span style={{ color: '#C0392B' }}>29.08.2024</span> TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.
+                  SİPARİŞ VERİLEN ÜRÜNLER <span style={{ color: '#C0392B' }}>{formattedDate}</span> TARİHİNDE KARGOYA TESLİM EDİLECEKTİR.
                 </h1>
               )}
               <img src={sizeTable} className='sizeTable' alt='size' />

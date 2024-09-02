@@ -216,7 +216,7 @@ const CheckoutPage = () => {
     email: '',
     address: '',
     city: '',
-    district:'',
+    province:'',
     postalCode: '',
     country: { value: 'Turkey', label: 'Turkey', flag: '🇹🇷' },
     paymentMethod: '',
@@ -242,6 +242,8 @@ const CheckoutPage = () => {
     
     try {
       
+      const { totalCost } = calculateTotal();
+
       // } else {
         // Save the order data in database
         const orderItems = cart.map(item => ({
@@ -254,10 +256,15 @@ const CheckoutPage = () => {
 
         const orderData = {
           orderItems,
-          shippingAddress: form,
+          shippingAddress: {
+            ...form,
+            city: form.city.value,         // Extract city value
+            country: form.country.value,   // Extract country value
+            province: form.province?.value // Ensure district value is present if required
+          },
           paymentMethod: form.paymentMethod,
           itemsPrice: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-          totalPrice: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+          totalPrice: totalCost,
           user: userId
         };
   
