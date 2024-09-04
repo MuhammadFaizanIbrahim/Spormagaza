@@ -7,7 +7,7 @@ const Social = () => {
     <div className="fullSocial">
       <a href="https://www.instagram.com/spormagaza.tr?igsh=MXQwbXVvYzYwYWNwYw==" target="_blank" rel="noopener noreferrer" className="socialItem">
         <FaInstagram className="socialIcon" />
-        <span className="socialText">@spormagaza.tr</span>
+        <span className="socialText">@spormagazatr</span>
       </a>
     </div>
   );
