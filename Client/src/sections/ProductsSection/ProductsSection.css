@@ -135,6 +135,7 @@
   font-size: 16px;
   margin: 0;
 }
+
 @keyframes slideInFromRight {
   0% {
     transform: translateX(100%);

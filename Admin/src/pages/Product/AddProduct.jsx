@@ -12,6 +12,7 @@ const AddProduct = () => {
         description: '',
         brand: '',
         price: '',
+        higherPrice: '',
         category: '',
         countInStock: '',
         isFeatured: false,
@@ -23,6 +24,7 @@ const AddProduct = () => {
     const [severity, setSeverity] = useState('success');
     const [fileInputs, setFileInputs] = useState([{ id: Date.now(), files: [] }]);
     const [previewImages, setPreviewImages] = useState([]);
+    const [showHigherPrice, setShowHigherPrice] = useState(false); //Higher: State for toggling higherPrice field
 
     useEffect(() => {
         fetchDataFromApi('/api/category').then((res) => {
@@ -88,6 +90,7 @@ const AddProduct = () => {
         });
         formData.append('brand', product.brand);
         formData.append('price', product.price);
+        if (showHigherPrice) formData.append('higherPrice', product.higherPrice); //Higher: Append higherPrice if checkbox is checked
         formData.append('category', product.category);
         formData.append('countInStockForSmall', product.countInStockForSmall);
         formData.append('countInStockForMedium', product.countInStockForMedium);
@@ -194,8 +197,30 @@ const AddProduct = () => {
                     fullWidth
                     style={{ marginBottom: '20px' }}
                 />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={showHigherPrice}
+                            onChange={() => setShowHigherPrice(!showHigherPrice)} //Higher: Toggle checkbox for higherPrice
+                        />
+                    }
+                    label="İndirimli Fiyatı Göster"
+                />
+
+                {showHigherPrice && ( //Higher: Conditionally render higherPrice field
+                    <TextField
+                        label="Daha Yüksek Fiyat"
+                        name="higherPrice"
+                        type="number"
+                        value={product.higherPrice}
+                        onChange={handleChange}
+                        fullWidth
+                        style={{ marginBottom: '20px' }}
+                    />
+                )}
+
                 <TextField
-                    label="Fiyat"
+                    label={showHigherPrice ? "İndirimli Fiyat" : "Fiyat"} //Higher: Conditionally change label
                     name="price"
                     type="number"
                     value={product.price}
@@ -203,6 +228,8 @@ const AddProduct = () => {
                     fullWidth
                     style={{ marginBottom: '20px' }}
                 />
+                
+
                 <FormControl fullWidth style={{ marginBottom: '20px' }}>
                     <InputLabel>Kategori</InputLabel>
                     <Select

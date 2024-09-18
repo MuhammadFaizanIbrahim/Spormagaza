@@ -154,6 +154,7 @@ router.post('/create', upload.array('images', 10), async (req, res) => {
           images: imgurl,
           brand: req.body.brand,
           price: req.body.price,
+          higherPrice: req.body.higherPrice,
           category: req.body.category,
           countInStockForSmall: req.body.countInStockForSmall,
           countInStockForMedium: req.body.countInStockForMedium,
@@ -183,6 +184,7 @@ router.post('/create', upload.array('images', 10), async (req, res) => {
       });
   }
 });
+
 router.delete('/:id', async(req, res)=>{
     const deletProduct = await Product.findByIdAndDelete(req.params.id);
     if(!deletProduct) {
@@ -230,6 +232,7 @@ router.put('/:id', upload.array('images', 10), async (req, res) => {
                 images: imgurl.length > 0 ? imgurl : req.body.images,
                 brand: req.body.brand,
                 price: req.body.price,
+                higherPrice: req.body.higherPrice,
                 category: req.body.category,
                 countInStockForSmall: req.body.countInStockForSmall,
                 countInStockForMedium: req.body.countInStockForMedium,

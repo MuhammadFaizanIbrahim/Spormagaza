@@ -14,6 +14,7 @@ const UpdateProduct = () => {
         images: [],
         brand: '',
         price: '',
+        higherPrice: '',
         category: '',
         countInStock: '',
         rating: '',
@@ -26,6 +27,7 @@ const UpdateProduct = () => {
     const [message, setMessage] = useState('');
     const [fileInputs, setFileInputs] = useState([]);
     const [previewImages, setPreviewImages] = useState([]);
+    const [showHigherPrice, setShowHigherPrice] = useState(false);
 
     useEffect(() => {
         fetchDataFromApi(`/api/products/${id}`).then((res) => {
@@ -108,6 +110,7 @@ const UpdateProduct = () => {
         });
         formData.append('brand', product.brand);
         formData.append('price', product.price);
+        formData.append('higherPrice', product.higherPrice);
         formData.append('category', product.category);
         formData.append('countInStockForSmall', product.countInStockForSmall);
         formData.append('countInStockForMedium', product.countInStockForMedium);
@@ -136,6 +139,22 @@ const UpdateProduct = () => {
         }));
         setPreviewImages([]);
         setFileInputs([]);
+    };
+
+    useEffect(() => {
+        if (product.higherPrice && product.higherPrice > 0) {
+            setShowHigherPrice(true);
+        }
+    }, [product.higherPrice]);
+
+    const handleCheckboxChange = (e) => {
+        setShowHigherPrice(e.target.checked);
+        if (!e.target.checked) {
+            setProduct(prevState => ({
+                ...prevState,
+                higherPrice: 0
+            }));
+        }
     };
 
     return (
@@ -203,8 +222,32 @@ const UpdateProduct = () => {
                     fullWidth
                     style={{ marginTop: '20px', marginBottom: '20px' }}
                 />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={showHigherPrice}
+                            onChange={handleCheckboxChange}
+                        />
+                    }
+                    label="İndirimli Fiyatı Göster"
+                    style={{ marginBottom: '20px' }}
+                />
+
+                {showHigherPrice && (
+                    <TextField
+                        label="Daha Yüksek Fiyat"
+                        name="higherPrice"
+                        type="number"
+                        value={product.higherPrice}
+                        onChange={handleChange}
+                        fullWidth
+                        style={{ marginBottom: '20px' }}
+                    />
+                )}
+
                 <TextField
-                    label="Fiyat"
+                    //Higher - Adjusted label based on checkbox status
+                    label={showHigherPrice ? "İndirimli Fiyat" : "Fiyat"}
                     name="price"
                     type="number"
                     value={product.price}

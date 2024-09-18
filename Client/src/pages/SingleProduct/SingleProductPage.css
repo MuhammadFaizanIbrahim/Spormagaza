@@ -136,6 +136,14 @@
     font-weight: bold;
 }
 
+.product-higherprice {
+    margin: 30px 0 -25px 0;
+    font-size: 25px;
+    text-decoration: line-through;
+    color: red;
+  }
+  
+
 .share-now {
     display: flex;
     align-items: center;
@@ -417,6 +425,66 @@
     border: 1px solid #ddd;
     border-radius: 5px;
   }
+
+  /* Loading animation on button */
+.btn.loading {
+    position: relative;
+    pointer-events: none; /* Disable button click */
+    opacity: 0.6;
+  }
+  
+  .btn.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+    border-top: 3px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Success message styling */
+  .success-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1894AC;
+    color: white;
+    display: inline-block;
+    animation: fadeInOut 3s ease-in-out;
+    font-size: 1.2rem;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    10% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+  
   
 
   /* Tablet screens (768px and below) */
@@ -753,5 +821,9 @@
         align-items: center;
         margin-top: -10px;
       }
-      
+
+      .success-message {
+        margin-left: 5%;
+        font-size: 15px;
+      }
 }

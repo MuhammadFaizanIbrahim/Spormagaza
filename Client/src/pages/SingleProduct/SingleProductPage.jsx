@@ -16,6 +16,8 @@ const SingleProductPage = () => {
   const [product, setProduct] = useState(null);
   const [showZoomedImage, setShowZoomedImage] = useState(false);
   const [zoomedImage, setZoomedImage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAdded, setIsAdded] = useState(false); // To manage the success message
   const [selectedImage, setSelectedImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('S'); // Default size
   const [quantity, setQuantity] = useState(1);
@@ -24,6 +26,7 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     fetchDataFromApi(`/api/products/${id}`).then((res) => {
+      console.log(res); // Check if 'higherprice' exists in the response
       setProduct(res);
       setSelectedImage(res.images[0]);
     });
@@ -60,8 +63,15 @@ const SingleProductPage = () => {
   const handleAddToCart = () => {
     // const user = localStorage.getItem('user');
     // const token = localStorage.getItem('token');
-  
-    addToCart({ ...product, quantity, selectedSize });
+    setIsLoading(true); // Start loading
+
+    // addToCart({ ...product, quantity, selectedSize });
+    setTimeout(() => {
+      addToCart({ ...product, quantity, selectedSize });
+      setIsLoading(false); // End loading
+      setIsAdded(true); // Show success message
+      setTimeout(() => setIsAdded(false), 3000); // Hide success message after 3 seconds
+    }, 1000);
     // if (user && token) {
     // } else {
     //   alert('Sepetinize ürün eklemek için lütfen giriş yapın.');
@@ -182,6 +192,13 @@ const SingleProductPage = () => {
                 
               )}
               <img src={sizeTable} className='sizeTable' alt='size' />
+               {/* Higher: Check if higherprice exists and is greater than 0 */}
+               {product?.higherPrice > 0 && (
+                <p className="product-higherprice">
+                  ₺{product.higherPrice},00
+                </p>
+              )}
+
               <p className="product-price">₺{product.price},00</p>
               <div className="share-now">
             <div className="social-icons">
@@ -225,11 +242,11 @@ const SingleProductPage = () => {
                 </button>
               </div>
               <button
-                className={`btn add-to-cart ${isOutOfStock ? 'disabled-btn' : ''}`}
+                className={`btn add-to-cart ${isLoading ? 'loading' : ''}`} // Add loading class
                 onClick={handleAddToCart}
-                disabled={isOutOfStock}
+                disabled={isLoading} // Disable button while loading
               >
-                Sepete ekle
+                {isLoading ? 'Yükleniyor...' : 'Sepete Ekle'}
               </button>
               <button
                 className={`btn buy-now ${isOutOfStock ? 'disabled-btn' : ''}`}
@@ -246,6 +263,12 @@ const SingleProductPage = () => {
               >
                 Şimdi al
               </button>
+               {/* Success message */}
+                {isAdded && (
+                  <div className="success-message">
+                    <span>&#10004; Ürün Sepete Eklendi!</span>
+                  </div>
+                )}
             </div>
           </div>
         </div>
