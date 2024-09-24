@@ -420,7 +420,7 @@ body {
 
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 768px) {
 
   body {
     width: 100vw;
@@ -526,17 +526,17 @@ body {
   }
   
   .HeaderLogo {
-    width: 220px;
-    height: 150px;
-    margin-left: -0.7rem;
+    width: 160px;
+    height: 130px;
+    margin-left: -1rem;
     margin-top: 10px;
     /* margin-bottom: 1rem; */
 
   }
   
   .Logo {
-    width: 220px;
-    height: 150px;
+    width: 160px;
+    height: 130px;
   }
 
 
@@ -568,7 +568,7 @@ body {
 .cartQuantity {
   font-size: 12px;
   top: 25%;
-  right: 2.2%;
+  right: 7.6%;
   width: 20px;
   height: 20px;
 
@@ -613,3 +613,19 @@ body {
     display: none;
   }
 } 
+
+@media (min-width: 730px) and (max-width: 1024px) { 
+  .UpHeader {
+    gap: 4rem; /* Adjusted gap for large mobile screens */
+    padding-left: 1rem; /* Adjusted padding to prevent icons from being too far right */
+    padding-right: 1rem; /* Adjusted padding to ensure visibility of menu icon */
+  }
+
+  .rightSideIcons {
+    margin-right: 0.5rem; /* Reduced margin to adjust icons positioning */
+  }
+
+  .mobileMenuIcon {
+    display: block; /* Ensure the menu icon is visible on large screens */
+  }
+}
