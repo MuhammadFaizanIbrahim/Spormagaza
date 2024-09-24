@@ -527,8 +527,8 @@ body {
   
   .HeaderLogo {
     width: 160px;
-    height: 130px;
-    margin-left: -1rem;
+    height: 140px;
+    margin-left: -0.7rem;
     margin-top: 10px;
     /* margin-bottom: 1rem; */
 
@@ -536,7 +536,7 @@ body {
   
   .Logo {
     width: 160px;
-    height: 130px;
+    height: 140px;
   }
 
 
